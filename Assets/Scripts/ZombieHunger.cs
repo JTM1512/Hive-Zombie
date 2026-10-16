@@ -37,10 +37,10 @@ public class ZombieHunger : MonoBehaviour
             health.TakeDamage(starveDamagePerSecond * Time.deltaTime);
         }
 
-        if (Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame)
+        /*if (Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame)
         {
             Eat(testFoodValue, testHeal);
-        }
+        }*/
 
         if (hungerBar != null)
         {
