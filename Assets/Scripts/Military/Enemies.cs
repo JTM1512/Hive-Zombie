@@ -1,8 +1,9 @@
 using UnityEngine;
 
+[System.Serializable]
 public class Enemies : MonoBehaviour
 {
-    [SerializeField] Tiers[] enemyTiers;
+    [SerializeField] Tiers[] Tiers;
     [SerializeField] float spawnInterval = 8f;
     [SerializeField] int maxAlive = 6;
     [SerializeField] Transform[] spawnPoints;
@@ -15,11 +16,11 @@ public class Enemies : MonoBehaviour
     {
         currentTier = PickTier(Tracker.Instance.Count);
     }
-    void onEnable()
+    void OnEnable()
     {
         Tracker.Instance.CountChanged += OnHordeCountChanged;
     }
-    void onDisable()
+    void OnDisable()
     {
         if(Tracker.Instance != null)
         {
@@ -42,8 +43,8 @@ public class Enemies : MonoBehaviour
     }
     Tiers PickTier(int zombieCount)
     {
-        Tiers best = enemyTiers[0];
-        foreach(Tiers tier in enemyTiers)
+        Tiers best = Tiers[0];
+        foreach(Tiers tier in Tiers)
         {
          if(zombieCount >= tier.minZombies && tier.minZombies > best.minZombies)
          {
