@@ -31,7 +31,7 @@ public class ZombieHunger : MonoBehaviour
             hunger = 0;
         }
         
-        if (hunger <=0 && hunger != null)
+        if (hunger <=0 )
         {
             // If hunger is zero, take damage over time
             health.TakeDamage(starveDamagePerSecond * Time.deltaTime);
