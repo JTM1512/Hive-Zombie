@@ -4,7 +4,8 @@ public class Civilian : MonoBehaviour
 {
     [SerializeField] float food = 25f;
     [SerializeField] float heal = 20f;
-    [SerializeField] Sprite zombieSprite; 
+    [SerializeField] Sprite zombieSprite;
+    [SerializeField] float zombieHealth = 50f;
 
     bool turned;
 
@@ -23,6 +24,10 @@ public class Civilian : MonoBehaviour
             spriteRenderer.sprite = zombieSprite;
         }
 
+        // Health starts now. A living civilian does not have any.
+        ZombieHealth health = gameObject.AddComponent<ZombieHealth>();
+        health.SetHealth(zombieHealth);
+
         // Start following the player
         ZombieFollow zombieFollow = GetComponent<ZombieFollow>();
         if (zombieFollow != null)
@@ -36,8 +41,8 @@ public class Civilian : MonoBehaviour
             body.enabled = false;
         }
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    // Awake is called when the script instance is being loaded
+    void Awake()
     {
         
     }

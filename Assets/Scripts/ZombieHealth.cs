@@ -10,8 +10,8 @@ public class ZombieHealth : MonoBehaviour
     // Hunger reads these. It does not touch the private number.
     public float currentHealth => health;
     public float maxHealthValue => maxHealth;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    // Awake is called when the script instance is being loaded
+    void Awake()
     {
         health = maxHealth;
     }
@@ -35,6 +35,14 @@ public class ZombieHealth : MonoBehaviour
     {
         health = Mathf.Max(0, health - amount);
     }
+
+    public void SetHealth(float amount)
+    {
+        // This method sets both the current health and the maximum health to the specified amount.
+        maxHealth = amount;
+        health = amount;
+    }
+
 
 
 }
