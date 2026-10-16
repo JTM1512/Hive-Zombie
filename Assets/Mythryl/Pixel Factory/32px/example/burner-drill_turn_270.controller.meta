@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 84c538a6a60e37e85575e6d63f353faa
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 416592
+  packageName: 2D Isometric Pixel Factory Free - Mythryl Studio
+  packageVersion: 1.0
+  assetPath: Assets/Mythryl/Pixel Factory/32px/example/burner-drill_turn_270.controller
+  uploadId: 1018634

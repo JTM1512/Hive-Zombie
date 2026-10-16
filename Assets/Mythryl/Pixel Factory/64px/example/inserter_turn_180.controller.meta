@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b0a3eda1f81751035a710a914c24f735
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 416592
+  packageName: 2D Isometric Pixel Factory Free - Mythryl Studio
+  packageVersion: 1.0
+  assetPath: Assets/Mythryl/Pixel Factory/64px/example/inserter_turn_180.controller
+  uploadId: 1018634

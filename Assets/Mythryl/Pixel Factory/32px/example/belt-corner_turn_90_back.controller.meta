@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 75b711050d5e2b27289083759060b7a1
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 416592
+  packageName: 2D Isometric Pixel Factory Free - Mythryl Studio
+  packageVersion: 1.0
+  assetPath: Assets/Mythryl/Pixel Factory/32px/example/belt-corner_turn_90_back.controller
+  uploadId: 1018634

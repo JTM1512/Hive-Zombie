@@ -1,0 +1,479 @@
+fileFormatVersion: 2
+guid: a4eeadb8dab50e525a7abf685fd5889c
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 8192
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: burner-drill_shadow_turn_0_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 372
+        width: 116
+        height: 124
+      alignment: 9
+      pivot: {x: 0.5, y: 0.241935}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01d8cd8768610bd56fdf33176ea476fb
+      internalID: 192894640010773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: burner-drill_shadow_turn_0_1
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 372
+        width: 116
+        height: 124
+      alignment: 9
+      pivot: {x: 0.5, y: 0.241935}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00d8cbf467610a426edf31846da47568
+      internalID: 194694248085416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: burner-drill_shadow_turn_0_2
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 372
+        width: 116
+        height: 124
+      alignment: 9
+      pivot: {x: 0.5, y: 0.241935}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03d8d0ad666108af71df363d70a47a21
+      internalID: 189295490971963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: burner-drill_shadow_turn_0_3
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 372
+        width: 116
+        height: 124
+      alignment: 9
+      pivot: {x: 0.5, y: 0.241935}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02d8cf1a6561071c70df34aa6fa4788e
+      internalID: 191095099046606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: burner-drill_shadow_turn_90_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 248
+        width: 116
+        height: 124
+      alignment: 9
+      pivot: {x: 0.5, y: 0.241935}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79413e7e7ba898e89c1682ce965d6d5a
+      internalID: 3731538933516136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: burner-drill_shadow_turn_90_1
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 248
+        width: 116
+        height: 124
+      alignment: 9
+      pivot: {x: 0.5, y: 0.241935}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a4140117ca89a7b9d168461975d6eed
+      internalID: 3729739325441493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: burner-drill_shadow_turn_90_2
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 248
+        width: 116
+        height: 124
+      alignment: 9
+      pivot: {x: 0.5, y: 0.241935}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77413b587da89c0e9a167fa8945d6a34
+      internalID: 3727939784477326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: burner-drill_shadow_turn_90_3
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 248
+        width: 116
+        height: 124
+      alignment: 9
+      pivot: {x: 0.5, y: 0.241935}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78413ceb7ea89da19b16813b955d6bc7
+      internalID: 3726140176402683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: burner-drill_shadow_turn_180_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 124
+        width: 116
+        height: 124
+      alignment: 9
+      pivot: {x: 0.5, y: 0.241935}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9358587cfc30797aff2760cc3f931fa0
+      internalID: 217901427527240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: burner-drill_shadow_turn_180_1
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 124
+        width: 116
+        height: 124
+      alignment: 9
+      pivot: {x: 0.5, y: 0.241935}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94585a0ffd307b0d0027625f40932133
+      internalID: 216101819452597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: burner-drill_shadow_turn_180_2
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 124
+        width: 116
+        height: 124
+      alignment: 9
+      pivot: {x: 0.5, y: 0.241935}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95585ba2fa307654012763f2419322c6
+      internalID: 214302278488430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: burner-drill_shadow_turn_180_3
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 124
+        width: 116
+        height: 124
+      alignment: 9
+      pivot: {x: 0.5, y: 0.241935}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96585d35fb3077e70227658542932459
+      internalID: 212502670413787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: burner-drill_shadow_turn_270_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 116
+        height: 124
+      alignment: 9
+      pivot: {x: 0.5, y: 0.241935}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50ed569628143e9cc8c41f2624680f62
+      internalID: 3023734752220162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: burner-drill_shadow_turn_270_1
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 0
+        width: 116
+        height: 124
+      alignment: 9
+      pivot: {x: 0.5, y: 0.241935}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51ed58292914402fc9c420b9256810f5
+      internalID: 3021935144145519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: burner-drill_shadow_turn_270_2
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 0
+        width: 116
+        height: 124
+      alignment: 9
+      pivot: {x: 0.5, y: 0.241935}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4eed53702a1441c2c6c41c0022680c3c
+      internalID: 3027333901258972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: burner-drill_shadow_turn_270_3
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 0
+        width: 116
+        height: 124
+      alignment: 9
+      pivot: {x: 0.5, y: 0.241935}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fed55032b144355c7c41d9323680dcf
+      internalID: 3025534293184329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      burner-drill_shadow_turn_0_0: 192894640010773
+      burner-drill_shadow_turn_0_1: 194694248085416
+      burner-drill_shadow_turn_0_2: 189295490971963
+      burner-drill_shadow_turn_0_3: 191095099046606
+      burner-drill_shadow_turn_90_0: 3731538933516136
+      burner-drill_shadow_turn_90_1: 3729739325441493
+      burner-drill_shadow_turn_90_2: 3727939784477326
+      burner-drill_shadow_turn_90_3: 3726140176402683
+      burner-drill_shadow_turn_180_0: 217901427527240
+      burner-drill_shadow_turn_180_1: 216101819452597
+      burner-drill_shadow_turn_180_2: 214302278488430
+      burner-drill_shadow_turn_180_3: 212502670413787
+      burner-drill_shadow_turn_270_0: 3023734752220162
+      burner-drill_shadow_turn_270_1: 3021935144145519
+      burner-drill_shadow_turn_270_2: 3027333901258972
+      burner-drill_shadow_turn_270_3: 3025534293184329
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 416592
+  packageName: 2D Isometric Pixel Factory Free - Mythryl Studio
+  packageVersion: 1.0
+  assetPath: Assets/Mythryl/Pixel Factory/64px/shadows/mining/burner-drill.png
+  uploadId: 1018634

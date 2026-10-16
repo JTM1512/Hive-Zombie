@@ -1,0 +1,479 @@
+fileFormatVersion: 2
+guid: a38a5bcc38c3e806d2b92d3cc135c7b0
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 8192
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: belt-end_shadow_turn_0_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 84
+        width: 36
+        height: 28
+      alignment: 9
+      pivot: {x: 0.5, y: 0.357143}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6eae663fc19db1bd708bdc4f91f5748b
+      internalID: 506321402740436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: belt-end_shadow_turn_0_1
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 84
+        width: 36
+        height: 28
+      alignment: 9
+      pivot: {x: 0.5, y: 0.357143}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dae64acc09db02a6f8bdabc90f572f8
+      internalID: 504521794665793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: belt-end_shadow_turn_0_2
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 84
+        width: 36
+        height: 28
+      alignment: 9
+      pivot: {x: 0.5, y: 0.357143}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70ae6965bf9dae97728bdf7593f577b1
+      internalID: 502722253701626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: belt-end_shadow_turn_0_3
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 84
+        width: 36
+        height: 28
+      alignment: 9
+      pivot: {x: 0.5, y: 0.357143}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fae67d2be9dad04718bdde292f5761e
+      internalID: 500922645626983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: belt-end_shadow_turn_90_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 56
+        width: 36
+        height: 28
+      alignment: 9
+      pivot: {x: 0.5, y: 0.357143}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4a9cef69cfaa2f0830d4346a019992a
+      internalID: 3748438156265875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: belt-end_shadow_turn_90_1
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 56
+        width: 36
+        height: 28
+      alignment: 9
+      pivot: {x: 0.5, y: 0.357143}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5a9d0899dfaa483840d44d9a1199abd
+      internalID: 3750237764340518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: belt-end_shadow_turn_90_2
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 56
+        width: 36
+        height: 28
+      alignment: 9
+      pivot: {x: 0.5, y: 0.357143}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2a9cbd09efaa616810d40209e199604
+      internalID: 3752037305304685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: belt-end_shadow_turn_90_3
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 56
+        width: 36
+        height: 28
+      alignment: 9
+      pivot: {x: 0.5, y: 0.357143}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3a9cd639ffaa7a9820d41b39f199797
+      internalID: 3753836913379328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: belt-end_shadow_turn_180_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 28
+        width: 36
+        height: 28
+      alignment: 9
+      pivot: {x: 0.5, y: 0.357143}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9fc7e044d522ef22d5f3914e591c8b0
+      internalID: 1365755489661001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: belt-end_shadow_turn_180_1
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 28
+        width: 36
+        height: 28
+      alignment: 9
+      pivot: {x: 0.5, y: 0.357143}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eafc7f974e5230852e5f3aa7e691ca43
+      internalID: 1367555097735644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: belt-end_shadow_turn_180_2
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 28
+        width: 36
+        height: 28
+      alignment: 9
+      pivot: {x: 0.5, y: 0.357143}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebfc812a4b522bcc2f5f3c3ae791cbd6
+      internalID: 1362156340622191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: belt-end_shadow_turn_180_3
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 28
+        width: 36
+        height: 28
+      alignment: 9
+      pivot: {x: 0.5, y: 0.357143}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecfc82bd4c522d5f305f3dcde891cd69
+      internalID: 1363955948696834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: belt-end_shadow_turn_270_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 36
+        height: 28
+      alignment: 9
+      pivot: {x: 0.5, y: 0.357143}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89a29ecee7ce75c437846b9ea83f6fb2
+      internalID: 2601698450379355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: belt-end_shadow_turn_270_1
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 0
+        width: 36
+        height: 28
+      alignment: 9
+      pivot: {x: 0.5, y: 0.357143}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8aa2a061e8ce775738846d31a93f7145
+      internalID: 2603498058453998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: belt-end_shadow_turn_270_2
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 0
+        width: 36
+        height: 28
+      alignment: 9
+      pivot: {x: 0.5, y: 0.357143}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87a29ba8e9ce78ea35846878a63f6c8c
+      internalID: 2605297599418165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: belt-end_shadow_turn_270_3
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 0
+        width: 36
+        height: 28
+      alignment: 9
+      pivot: {x: 0.5, y: 0.357143}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88a29d3beace7a7d36846a0ba73f6e1f
+      internalID: 2607097207492808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      belt-end_shadow_turn_0_0: 506321402740436
+      belt-end_shadow_turn_0_1: 504521794665793
+      belt-end_shadow_turn_0_2: 502722253701626
+      belt-end_shadow_turn_0_3: 500922645626983
+      belt-end_shadow_turn_90_0: 3748438156265875
+      belt-end_shadow_turn_90_1: 3750237764340518
+      belt-end_shadow_turn_90_2: 3752037305304685
+      belt-end_shadow_turn_90_3: 3753836913379328
+      belt-end_shadow_turn_180_0: 1365755489661001
+      belt-end_shadow_turn_180_1: 1367555097735644
+      belt-end_shadow_turn_180_2: 1362156340622191
+      belt-end_shadow_turn_180_3: 1363955948696834
+      belt-end_shadow_turn_270_0: 2601698450379355
+      belt-end_shadow_turn_270_1: 2603498058453998
+      belt-end_shadow_turn_270_2: 2605297599418165
+      belt-end_shadow_turn_270_3: 2607097207492808
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 416592
+  packageName: 2D Isometric Pixel Factory Free - Mythryl Studio
+  packageVersion: 1.0
+  assetPath: Assets/Mythryl/Pixel Factory/32px/shadows/belts/belt-end.png
+  uploadId: 1018634

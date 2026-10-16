@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 4c75bd64c3125a16074e7eb4e4d36a18
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 416592
+  packageName: 2D Isometric Pixel Factory Free - Mythryl Studio
+  packageVersion: 1.0
+  assetPath: Assets/Mythryl/Pixel Factory/64px/example/belt-end_turn_270.controller
+  uploadId: 1018634

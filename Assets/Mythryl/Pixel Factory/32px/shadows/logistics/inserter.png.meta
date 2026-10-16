@@ -1,0 +1,1215 @@
+fileFormatVersion: 2
+guid: cc2ee1d4311f761a07025204a04fe7b8
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 8192
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: inserter_shadow_turn_0_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 90
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f809c5b182ecab6326c67c814e78264d
+      internalID: 3622948349786329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_0_1
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 90
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f709c41e81eca9d025c67aee4d7824ba
+      internalID: 3624747957860972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_0_2
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 90
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f609c28b84ecae8924c6795b4c782327
+      internalID: 3619349200747519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_0_3
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 90
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f509c0f883ecacf623c677c84b782194
+      internalID: 3621148808822162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_0_4
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 90
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc09cbfd86ecb1af2ac682cd4a782001
+      internalID: 3630146782084901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_0_5
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 90
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb09ca6a85ecb01c29c6813a49781e6e
+      internalID: 3631946390159544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_0_6
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 90
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa09c8d788ecb4d528c67fa748781cdb
+      internalID: 3626547633046091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_0_7
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 90
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f909c74487ecb34227c67e1447781b48
+      internalID: 3628347241120734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_0_8
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 90
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f009b9198aecb7fb1ec66fe9467819b5
+      internalID: 3637344945941569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_0_9
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 90
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef09b78689ecb6681dc66e5645781822
+      internalID: 3639144554016212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_0_10
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 90
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 125fd46a678f6ba055736b7a7e21853e
+      internalID: 165015222771010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_0_11
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 90
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 135fd5fd688f6d3356736d0d7f2186d1
+      internalID: 163215614696367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_90_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 60
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0482f7c6d5af6a27aadabcc1db545c0
+      internalID: 990483910077268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_90_1
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 60
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d148310f6e5af8357badad5f1eb54753
+      internalID: 988684302002625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_90_2
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 60
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d24832a26b5af37c7cadaef21fb548e6
+      internalID: 986884761038458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_90_3
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 60
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d34834356c5af50f7dadb08520b54a79
+      internalID: 985085152963815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_90_4
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 60
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc482930695af05676ada58021b54c0c
+      internalID: 983285611999648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_90_5
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 60
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd482ac36a5af1e977ada71322b54d9f
+      internalID: 981486003925005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_90_6
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 60
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce482c56675aed3078ada8a623b54f32
+      internalID: 979686462960838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_90_7
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 60
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf482de9685aeec379adaa3924b550c5
+      internalID: 977886854886195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_90_8
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 60
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8483c14755b033a82adb86425b55258
+      internalID: 976087313922028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_90_9
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 60
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9483da7765b04cd83adb9f726b553eb
+      internalID: 974287705847385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_90_10
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 60
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3a5862dbe346fdf216805bdba5f60d9
+      internalID: 1221578493953233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_90_11
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 60
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2a5849abd346e4c2068042ab95f5f46
+      internalID: 1223378102027876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_180_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 30
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02d0d3c6913f229894bf37d6f757cfc2
+      internalID: 2856586213446524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_180_1
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 30
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03d0d559923f242b95bf3969f857d155
+      internalID: 2854786605371881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_180_2
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 30
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00d0d0a0933f25be92bf34b0f557cc9c
+      internalID: 2852987064407714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_180_3
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 30
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01d0d233943f275193bf3643f657ce2f
+      internalID: 2851187456333071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_180_4
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 30
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06d0da12953f28e498bf3e22f357c976
+      internalID: 2863784645745096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_180_5
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 30
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07d0dba5963f2a7799bf3fb5f457cb09
+      internalID: 2861985037670453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_180_6
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 30
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04d0d6ec973f2c0a96bf3afcf157c650
+      internalID: 2860185496706286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_180_7
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 30
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05d0d87f983f2d9d97bf3c8ff257c7e3
+      internalID: 2858385888631643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_180_8
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 30
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ad0e05e893f16009cbf446eff57dc5a
+      internalID: 2870982809601764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_180_9
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 30
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bd0e1f18a3f17939dbf46010057dded
+      internalID: 2869183201527121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_180_10
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 30
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6abff44b5465d6811507471b573ea1ff
+      internalID: 2109384631605001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_180_11
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 30
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69bff2b85365d4ee14074588563ea06c
+      internalID: 2111184239679644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_270_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 350a7650f66204aac5bba5e098d21214
+      internalID: 3764116018060302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_270_1
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 0
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 360a77e3f762063dc6bba77399d213a7
+      internalID: 3762316409985659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_270_2
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 0
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 370a7976f4620184c7bba9069ad2153a
+      internalID: 3767715167099112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_270_3
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 0
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 380a7b09f5620317c8bbaa999bd216cd
+      internalID: 3765915559024469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_270_4
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 390a7c9cf261fe5ec9bbac2c94d20bc8
+      internalID: 3771314316137922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_270_5
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 0
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a0a7e2ff361fff1cabbadbf95d20d5b
+      internalID: 3769514708063279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_270_6
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 0
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b0a7fc2f061fb38cbbbaf5296d20eee
+      internalID: 3774913465176732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_270_7
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 0
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c0a8155f161fccbccbbb0e597d21081
+      internalID: 3773113857102089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_270_8
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d0a82e8ee61f812cdbbb27890d2057c
+      internalID: 3778512614215542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_270_9
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 0
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e0a847bef61f9a5cebbb40b91d2070f
+      internalID: 3776713006140899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_270_10
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 0
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e57aa1297c4f86771c684e79bcb4d6b5
+      internalID: 1139551416361599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inserter_shadow_turn_270_11
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 0
+        width: 28
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.266667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e47a9f967b4f84e41b684ce6bbb4d522
+      internalID: 1141351024436242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      inserter_shadow_turn_0_0: 3622948349786329
+      inserter_shadow_turn_0_1: 3624747957860972
+      inserter_shadow_turn_0_2: 3619349200747519
+      inserter_shadow_turn_0_3: 3621148808822162
+      inserter_shadow_turn_0_4: 3630146782084901
+      inserter_shadow_turn_0_5: 3631946390159544
+      inserter_shadow_turn_0_6: 3626547633046091
+      inserter_shadow_turn_0_7: 3628347241120734
+      inserter_shadow_turn_0_8: 3637344945941569
+      inserter_shadow_turn_0_9: 3639144554016212
+      inserter_shadow_turn_0_10: 165015222771010
+      inserter_shadow_turn_0_11: 163215614696367
+      inserter_shadow_turn_90_0: 990483910077268
+      inserter_shadow_turn_90_1: 988684302002625
+      inserter_shadow_turn_90_2: 986884761038458
+      inserter_shadow_turn_90_3: 985085152963815
+      inserter_shadow_turn_90_4: 983285611999648
+      inserter_shadow_turn_90_5: 981486003925005
+      inserter_shadow_turn_90_6: 979686462960838
+      inserter_shadow_turn_90_7: 977886854886195
+      inserter_shadow_turn_90_8: 976087313922028
+      inserter_shadow_turn_90_9: 974287705847385
+      inserter_shadow_turn_90_10: 1221578493953233
+      inserter_shadow_turn_90_11: 1223378102027876
+      inserter_shadow_turn_180_0: 2856586213446524
+      inserter_shadow_turn_180_1: 2854786605371881
+      inserter_shadow_turn_180_2: 2852987064407714
+      inserter_shadow_turn_180_3: 2851187456333071
+      inserter_shadow_turn_180_4: 2863784645745096
+      inserter_shadow_turn_180_5: 2861985037670453
+      inserter_shadow_turn_180_6: 2860185496706286
+      inserter_shadow_turn_180_7: 2858385888631643
+      inserter_shadow_turn_180_8: 2870982809601764
+      inserter_shadow_turn_180_9: 2869183201527121
+      inserter_shadow_turn_180_10: 2109384631605001
+      inserter_shadow_turn_180_11: 2111184239679644
+      inserter_shadow_turn_270_0: 3764116018060302
+      inserter_shadow_turn_270_1: 3762316409985659
+      inserter_shadow_turn_270_2: 3767715167099112
+      inserter_shadow_turn_270_3: 3765915559024469
+      inserter_shadow_turn_270_4: 3771314316137922
+      inserter_shadow_turn_270_5: 3769514708063279
+      inserter_shadow_turn_270_6: 3774913465176732
+      inserter_shadow_turn_270_7: 3773113857102089
+      inserter_shadow_turn_270_8: 3778512614215542
+      inserter_shadow_turn_270_9: 3776713006140899
+      inserter_shadow_turn_270_10: 1139551416361599
+      inserter_shadow_turn_270_11: 1141351024436242
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 416592
+  packageName: 2D Isometric Pixel Factory Free - Mythryl Studio
+  packageVersion: 1.0
+  assetPath: Assets/Mythryl/Pixel Factory/32px/shadows/logistics/inserter.png
+  uploadId: 1018634
