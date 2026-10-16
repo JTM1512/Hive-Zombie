@@ -40,6 +40,7 @@ public class Civilian : MonoBehaviour
         {
             body.enabled = false;
         }
+        Tracker.Instance.AddZombie();
     }
     // Awake is called when the script instance is being loaded
     void Awake()
