@@ -35,6 +35,7 @@ public class Civilian : MonoBehaviour
         {
             body.enabled = false;
         }
+        Tracker.Instance.AddZombie();
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
