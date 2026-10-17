@@ -10,7 +10,6 @@ public class ZombieHealth : MonoBehaviour
     // Hunger reads these. It does not touch the private number.
     public float currentHealth => health;
     public float maxHealthValue => maxHealth;
-    // Awake is called when the script instance is being loaded
     void Awake()
     {
         health = maxHealth;
@@ -33,7 +32,19 @@ public class ZombieHealth : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
-        health = Mathf.Max(0, health - amount);
+        if (health <= 0f) return;
+
+        health = Mathf.Max(0f, health - amount);
+        if (health > 0f) return;
+
+        ZombieFollow follow = GetComponent<ZombieFollow>();
+        if (follow == null || !follow.IsFollowing) return;
+
+        if (Tracker.Instance != null)
+        {
+            Tracker.Instance.RemoveZombie();
+        }
+        Destroy(gameObject);
     }
 
     public void SetHealth(float amount)

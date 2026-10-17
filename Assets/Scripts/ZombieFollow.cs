@@ -12,6 +12,8 @@ public class ZombieFollow : MonoBehaviour
     bool spent;
     ZombieHealth health;
 
+    public bool IsFollowing => isFollowing;
+
     // Method to start following the player
     public void StartFollowing(Transform playerTransform)
     {
