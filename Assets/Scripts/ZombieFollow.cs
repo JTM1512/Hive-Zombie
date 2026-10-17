@@ -8,6 +8,8 @@ public class ZombieFollow : MonoBehaviour
     Transform leader;
     bool isFollowing;
 
+    public bool IsFollowing => isFollowing;
+
     // Method to start following the player
     public void StartFollowing(Transform playerTransform)
     {

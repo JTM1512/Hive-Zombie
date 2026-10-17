@@ -214,6 +214,8 @@ GameObject:
   - component: {fileID: 251126378}
   - component: {fileID: 251126377}
   - component: {fileID: 251126379}
+  - component: {fileID: 251126380}
+  - component: {fileID: 251126381}
   m_Layer: 0
   m_Name: z1_1
   m_TagString: Untagged
@@ -511,6 +513,64 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZombieBite
   biteRange: 1.5
+--- !u!114 &251126380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251126371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7efaad6b75ba0364cb65134ff2c2e7cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Tracker
+--- !u!61 &251126381
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251126371}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &320853418
 GameObject:
   m_ObjectHideFlags: 0
@@ -1344,32 +1404,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemies
   Tiers:
   - tierName: Cops
-    minZombies: 1
+    minZombies: 0
     health: 10
     damage: 2
     speed: 5
     zombiePrefab: {fileID: 3650185472326457537, guid: ef68ef3365467e14d89e8e77fea4f302, type: 3}
+    attackType: 0
+    range: 1.2
+    cooldown: 1
   - tierName: Stronger cops
     minZombies: 3
     health: 15
     damage: 5
     speed: 10
     zombiePrefab: {fileID: 8523222470702780500, guid: 33cfe5a099fb2894c87b51f499de4b93, type: 3}
+    attackType: 1
+    range: 5
+    cooldown: 1.5
   - tierName: 'Military '
     minZombies: 7
     health: 20
     damage: 10
     speed: 15
     zombiePrefab: {fileID: 2819205624066829114, guid: 365bdd2c825564545b0831c4bdef340a, type: 3}
+    attackType: 3
+    range: 7
+    cooldown: 2
   - tierName: Military and cops
     minZombies: 15
     health: 15
     damage: 20
     speed: 10
     zombiePrefab: {fileID: 6520695942078075573, guid: 42e0baffbf49ff8499c0b991d4e68ae5, type: 3}
+    attackType: 4
+    range: 6
+    cooldown: 4
   spawnInterval: 8
   maxAlive: 6
-  spawnPoints: []
+  spawnPoints:
+  - {fileID: 501377502}
+  - {fileID: 1528315268}
+  - {fileID: 856987924}
 --- !u!4 &1479688362
 Transform:
   m_ObjectHideFlags: 0

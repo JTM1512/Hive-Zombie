@@ -11,22 +11,32 @@ public class Enemies : MonoBehaviour
     Tiers currentTier;
     float spawnTimer;
     int alive;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    bool listening;
+
     void Start()
     {
-        if(Tracker.Instance == null) return;
+        Listen();
+        if (Tracker.Instance == null) return;
         currentTier = PickTier(Tracker.Instance.Count);
     }
+
     void OnEnable()
     {
-        if(Tracker.Instance == null) return;
-        Tracker.Instance.CountChanged += OnHordeCountChanged;
+        Listen();
     }
+
     void OnDisable()
     {
-        if(Tracker.Instance == null) return;
+        if (!listening || Tracker.Instance == null) return;
         Tracker.Instance.CountChanged -= OnHordeCountChanged;
-        currentTier = PickTier(Tracker.Instance.Count);
+        listening = false;
+    }
+
+    void Listen()
+    {
+        if (listening || Tracker.Instance == null) return;
+        Tracker.Instance.CountChanged += OnHordeCountChanged;
+        listening = true;
     }
     void OnHordeCountChanged(int newCount)
     {

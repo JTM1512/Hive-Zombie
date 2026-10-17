@@ -10,4 +10,9 @@ public class Tiers
     public float damage;
     public float speed;
     public GameObject zombiePrefab;
+    [SerializeField] public AttackType attackType;
+    [SerializeField] public float range;
+    [SerializeField] public float cooldown;
 }
+public enum AttackType {Baton, Pistol, Rifle, Burst, Grenade}
+    

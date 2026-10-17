@@ -33,8 +33,14 @@ public class Civilian : MonoBehaviour
         Collider2D body = GetComponent<Collider2D>();
         if (body != null)
         {
-            body.enabled = false;
+            body.isTrigger = true;
         }
+
+        if (GetComponent<ZombieHealth>() == null)
+        {
+            gameObject.AddComponent<ZombieHealth>();
+        }
+
         Tracker.Instance.AddZombie();
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
