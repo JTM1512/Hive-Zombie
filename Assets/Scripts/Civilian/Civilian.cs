@@ -8,6 +8,7 @@ public class Civilian : MonoBehaviour
     [SerializeField] float zombieHealth = 50f;
 
     bool turned;
+    public bool HasTurned => turned;
 
     public void getBitten(ZombieHunger zombieHunger)
     {
