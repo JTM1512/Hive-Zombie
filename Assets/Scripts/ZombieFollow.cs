@@ -29,6 +29,7 @@ public class ZombieFollow : MonoBehaviour
     void Update()
     {
         if (!isFollowing || leader == null) return;
+        if (Time.timeScale == 0f) return;
 
         // Stand-in hit until something in the scene can hurt them.
         if (Keyboard.current != null && Keyboard.current.kKey.wasPressedThisFrame && health != null)

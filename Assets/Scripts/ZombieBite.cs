@@ -15,6 +15,8 @@ public class ZombieBite : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Time.timeScale == 0f) return;
+
         if (Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame) // Check if the E key was pressed
         {
             Bite(); // Call the Bite method
