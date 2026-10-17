@@ -14,18 +14,19 @@ public class Enemies : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if(Tracker.Instance == null) return;
         currentTier = PickTier(Tracker.Instance.Count);
     }
     void OnEnable()
     {
+        if(Tracker.Instance == null) return;
         Tracker.Instance.CountChanged += OnHordeCountChanged;
     }
     void OnDisable()
     {
-        if(Tracker.Instance != null)
-        {
-            Tracker.Instance.CountChanged -= OnHordeCountChanged;
-        }
+        if(Tracker.Instance == null) return;
+        Tracker.Instance.CountChanged -= OnHordeCountChanged;
+        currentTier = PickTier(Tracker.Instance.Count);
     }
     void OnHordeCountChanged(int newCount)
     {
