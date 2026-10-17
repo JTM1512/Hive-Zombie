@@ -25,10 +25,11 @@ public class ShieldAbility : MonoBehaviour
         List<ZombieFollow> spent = new List<ZombieFollow>();
         if (horde == null || !horde.TrySpend(cost, spent)) return;
 
+        // Activate the shield ability for the spent zombies
         for (int i = 0; i < spent.Count; i++)
         {
             float angle = (Mathf.PI * 2f / spent.Count) * i;
-            spent[i].StartShield(duartion, radius, orbitSpeed, angle);
+            spent[i].StartShield(shieldDuration, radius, orbitSpeed, angle);
         }
     }
 }

@@ -37,13 +37,13 @@ public class ZombieFollow : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!isFollowing || leader == null) return;
+        if (leader == null) return;
         if (Time.timeScale == 0f) return;
 
         // Stand-in hit until something in the scene can hurt them.
@@ -70,6 +70,23 @@ public class ZombieFollow : MonoBehaviour
             return;
         }
 
+        // Handle shielding behavior
+        if (shielding)
+        {
+            shieldTimer -= Time.deltaTime;
+            if (shieldTimer <= 0f)
+            {
+               gameObject.SetActive(false); // Disable the zombie after shielding duration ends
+                return;
+            }
+            angle += orbitSpeed * Time.deltaTime;
+            Vector2 offset = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * orbitRadius;
+            transform.position = (Vector2)leader.position + offset;
+            return;
+        }
+
+        if (!isFollowing) return;
+
         float distance = Vector2.Distance(transform.position, leader.position);
         if (distance <= stopDistance) return;
 
@@ -78,9 +95,19 @@ public class ZombieFollow : MonoBehaviour
 
     }
 
-    public void MarkSpent() 
+    public void MarkSpent()
     {
         spent = true;
         isFollowing = false;
+    }
+
+    // Method to start the shield effect for the zombie
+    public void StartShield(float duration, float radius, float speed, float startAngle)
+    {
+        shielding = true;
+        shieldTimer = duration;
+        orbitRadius = radius;
+        orbitSpeed = speed;
+        angle = startAngle;
     }
 }
