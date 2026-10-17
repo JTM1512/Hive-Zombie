@@ -51,7 +51,7 @@ public class Horde : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
         if (Keyboard.current == null || !Keyboard.current.qKey.wasPressedThisFrame) return;
         if (!TrySpend(1, spent)) return; 
@@ -59,5 +59,5 @@ public class Horde : MonoBehaviour
         {
             zombie.gameObject.SetActive(false);
         }
-    }
+    }*/
 }

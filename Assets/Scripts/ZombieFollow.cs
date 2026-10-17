@@ -10,6 +10,11 @@ public class ZombieFollow : MonoBehaviour
     Transform leader;
     bool isFollowing;
     bool spent;
+    bool shielding;
+    float shieldTimer;
+    float orbitRadius;
+    float orbitSpeed;
+    float angle;
     ZombieHealth health;
 
     public bool IsFollowing => isFollowing;
