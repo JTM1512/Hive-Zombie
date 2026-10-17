@@ -114,11 +114,8 @@ public class EnemyUnit : MonoBehaviour
         foreach (RaycastHit2D hit in hits)
         {
             if (hit.transform == transform) continue;
+            if (!TryDamage(hit.collider)) continue;
 
-            ZombieHealth zombie = hit.collider.GetComponent<ZombieHealth>();
-            if (!CanHurt(zombie)) continue;
-
-            zombie.TakeDamage(damage);
             if (!pierce) break;
         }
     }
@@ -131,13 +128,12 @@ public class EnemyUnit : MonoBehaviour
         foreach (float angle in angles)
         {
             Vector2 shot = Quaternion.Euler(0f, 0f, angle) * (Vector3)direction;
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, shot, range);
-            if (hit.collider == null || hit.transform == transform) continue;
+            RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, shot, range);
 
-            ZombieHealth zombie = hit.collider.GetComponent<ZombieHealth>();
-            if (CanHurt(zombie))
+            foreach (RaycastHit2D hit in hits)
             {
-                zombie.TakeDamage(damage);
+                if (hit.transform == transform) continue;
+                if (TryDamage(hit.collider)) break;
             }
         }
     }
@@ -147,12 +143,26 @@ public class EnemyUnit : MonoBehaviour
         Collider2D[] hits = Physics2D.OverlapCircleAll(point, radius);
         foreach (Collider2D hit in hits)
         {
-            ZombieHealth zombie = hit.GetComponent<ZombieHealth>();
-            if (CanHurt(zombie))
-            {
-                zombie.TakeDamage(damage);
-            }
+            if (hit.transform == transform) continue;
+            TryDamage(hit);
         }
+    }
+
+    // A shot or blast damages another soldier it hits, and the attacker is skipped.
+    bool TryDamage(Collider2D collider)
+    {
+        ZombieHealth zombie = collider.GetComponent<ZombieHealth>();
+        if (CanHurt(zombie))
+        {
+            zombie.TakeDamage(damage);
+            return true;
+        }
+
+        EnemyUnit ally = collider.GetComponent<EnemyUnit>();
+        if (ally == null || ally == this) return false;
+
+        ally.TakeDamage(damage);
+        return true;
     }
 
     bool CanHurt(ZombieHealth zombie)
