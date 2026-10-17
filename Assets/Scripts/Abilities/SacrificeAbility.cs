@@ -20,19 +20,21 @@ public class SacrificeAbility : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Keyboard.current != null || !Keyboard.current.digit2Key.wasPressedThisFrame)
+        if (Keyboard.current == null || !Keyboard.current.digit2Key.wasPressedThisFrame)
         {
             return; 
         }
 
         List<ZombieFollow> spent = new List<ZombieFollow>();
-        if (horde == null || !horde.TrySpend(sacrificeCost, spent)) return; 
+        if (horde == null || !horde.TrySpend(sacrificeCost, spent)) return;
 
+        // Apply the effects of the sacrifice to the player
         foreach (ZombieFollow zombie in spent)
         {
             if (hunger != null)
             {
-               hunger.Eat(foodValue, healValue);
+                // Apply the food and heal values to the player's hunger system
+                hunger.Eat(foodValue, healValue);
             }
 
             zombie.gameObject.SetActive(false);

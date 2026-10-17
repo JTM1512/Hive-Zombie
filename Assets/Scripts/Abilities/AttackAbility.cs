@@ -57,6 +57,7 @@ public class AttackAbility : MonoBehaviour
             best = civilian.transform;
         }
 
+        // Look for enemies as well 
         EnemyUnit[] enemies = FindObjectsByType<EnemyUnit>(FindObjectsSortMode.None);
         foreach (EnemyUnit enemy in enemies)
         {

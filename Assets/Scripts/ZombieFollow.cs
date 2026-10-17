@@ -8,6 +8,7 @@ public class ZombieFollow : MonoBehaviour
     [SerializeField] float testDamage = 25f; // Damage to apply when the 'K' key is pressed for testing purposes
 
     Transform leader;
+    Transform attackTarget;
     bool isFollowing;
     bool spent;
     bool shielding;
@@ -15,6 +16,9 @@ public class ZombieFollow : MonoBehaviour
     float orbitRadius;
     float orbitSpeed;
     float angle;
+    bool attacking;
+    float attackTimer;
+    float attackSpeed;
     ZombieHealth health;
 
     public bool IsFollowing => isFollowing;
@@ -85,6 +89,32 @@ public class ZombieFollow : MonoBehaviour
             return;
         }
 
+        // Handle attacking behavior
+        if (attacking)
+        {
+            attackTimer -= Time.deltaTime;
+            if (attackTimer <= 0f || attackTarget == null)
+            {
+                gameObject.SetActive(false); // Disable the zombie after attacking duration ends or if the target is null
+                return;
+            }
+            // Move the zombie towards the attack target
+            transform.position = Vector2.MoveTowards(transform.position, attackTarget.position, attackSpeed * Time.deltaTime);
+
+            if (Vector2.Distance(transform.position, attackTarget.position) <= 0.4f)
+            {
+               Pinned pinned = attackTarget.GetComponent<Pinned>();
+                if (pinned == null)
+                {
+                    pinned = attackTarget.gameObject.AddComponent<Pinned>();
+                }
+
+                pinned.Hold();
+
+            }
+            return;
+        }
+
         if (!isFollowing) return;
 
         float distance = Vector2.Distance(transform.position, leader.position);
@@ -109,5 +139,13 @@ public class ZombieFollow : MonoBehaviour
         orbitRadius = radius;
         orbitSpeed = speed;
         angle = startAngle;
+    }
+
+    public void StartAttack(Transform target, float duration, float speed)
+    {
+        attackTarget = target;
+        attacking = true;
+        attackTimer = duration;
+        attackSpeed = speed;
     }
 }

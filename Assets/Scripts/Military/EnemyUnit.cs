@@ -31,7 +31,11 @@ public class EnemyUnit : MonoBehaviour
 
     void Update()
     {
-        if (target == null) return;
+        if (target == null)
+            return;
+        Pinned pinned = GetComponent<Pinned>();
+        if (pinned != null && pinned.IsPinned) return;
+
 
         if (grenadeLive)
         {
