@@ -9,6 +9,7 @@ public class ZombieFollow : MonoBehaviour
 
     Transform leader;
     bool isFollowing;
+    bool spent;
     ZombieHealth health;
 
     // Method to start following the player
@@ -16,6 +17,13 @@ public class ZombieFollow : MonoBehaviour
     {
         leader = playerTransform;
         isFollowing = true;
+
+        // Register this zombie with the horde
+        Horde horde = playerTransform.GetComponent<Horde>();
+        if (horde != null)
+        {
+            horde.Register(this);
+        }
 
         health = GetComponent<ZombieHealth>();
     }
@@ -38,6 +46,18 @@ public class ZombieFollow : MonoBehaviour
         // Check if the zombie is dead
         if (health != null && health.currentHealth <= 0)
         {
+            // Spent zombies are removed from the count
+            if (!spent && Tracker.Instance != null)
+            {
+                Tracker.Instance.RemoveZombie();
+            }
+
+            Horde horde = leader.GetComponent<Horde>();
+            if (horde != null)
+            {
+                horde.Unregister(this);
+            }
+
             // Stop following the player and disable the zombie
             gameObject.SetActive(false);
             return;
@@ -49,5 +69,11 @@ public class ZombieFollow : MonoBehaviour
         // Move the zombie towards the player
         transform.position = Vector2.MoveTowards(transform.position, leader.position, followSpeed * Time.deltaTime);
 
+    }
+
+    public void MarkSpent() 
+    {
+        spent = true;
+        isFollowing = false;
     }
 }
