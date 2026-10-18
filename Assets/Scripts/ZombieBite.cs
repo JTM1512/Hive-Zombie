@@ -39,9 +39,13 @@ public class ZombieBite : MonoBehaviour
             
             civilian.getBitten(hunger); // Call the getBitten method on the civilian, passing the zombie's hunger
 
-            ZombiePlayerAnimation animationDriver = GetComponent<ZombiePlayerAnimation>();
-            if (animationDriver != null)
-                animationDriver.PlayAttack();
+            // Trigger the player's bite animation only when the bite actually turns a civilian.
+            if (civilian.HasTurned)
+            {
+                ZombiePlayerAnimation animationDriver = GetComponent<ZombiePlayerAnimation>();
+                if (animationDriver != null)
+                    animationDriver.PlayAttack();
+            }
 
             break;
         }

@@ -20,6 +20,9 @@ public class Civilian : MonoBehaviour
         ZombiePlayerAnimation animationDriver = GetComponent<ZombiePlayerAnimation>();
         if (animationDriver != null)
         {
+            CivilianAnimation civilianAnimation = GetComponent<CivilianAnimation>();
+            if (civilianAnimation != null)
+                civilianAnimation.enabled = false;
             animationDriver.StartZombieAnimations();
         }
         else

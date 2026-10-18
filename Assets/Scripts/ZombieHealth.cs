@@ -48,11 +48,8 @@ public class ZombieHealth : MonoBehaviour
         ZombieFollow follow = GetComponent<ZombieFollow>();
         if (follow == null || !follow.IsFollowing) return;
 
-        if (Tracker.Instance != null)
-        {
-            Tracker.Instance.RemoveZombie();
-        }
-        Destroy(gameObject);
+        // ZombieFollow owns follower death: it detaches the follower, updates the
+        // horde count, and keeps the object alive until its death animation ends.
     }
 
     public void SetHealth(float amount)

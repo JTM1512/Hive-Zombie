@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3677117498735472944}
   - component: {fileID: 3822783676784870774}
   - component: {fileID: 978085169390908020}
+  - component: {fileID: 7345172913579012643}
   m_Layer: 0
   m_Name: Civilian
   m_TagString: Untagged
@@ -85,9 +86,9 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 32767
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 6396c4ba574884a30a240729803d3903, type: 3}
+  m_Sprite: {fileID: 7366803887970489002, guid: 1372348bd14e8ae41814fce8e769f504, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -160,6 +161,34 @@ MonoBehaviour:
   heal: 20
   zombieSprite: {fileID: 21300000, guid: c5e01ff6c27c84768a2ca7e24e5e6af3, type: 3}
   zombieHealth: 50
+--- !u!114 &7345172913579012643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4137033617336024646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5fc7546b6a8433b80f13407d2e51a67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CivilianAnimation
+  idleSheets:
+  - {fileID: 2800000, guid: 1372348bd14e8ae41814fce8e769f504, type: 3}
+  - {fileID: 2800000, guid: 14cb290c9a7f3944daeef0da5445dd9d, type: 3}
+  - {fileID: 2800000, guid: bd08eb169ada95e45815265cff04c893, type: 3}
+  - {fileID: 2800000, guid: eac756df3462da949b3b8e1fc878d0e1, type: 3}
+  runSheets:
+  - {fileID: 2800000, guid: eb609f3c68ddd264c9aad83f6a92138d, type: 3}
+  - {fileID: 2800000, guid: 46ec5700f9fd9db4ead1c40da39d0cb3, type: 3}
+  - {fileID: 2800000, guid: 7e441b384335a844eb7d1bf9f0beea64, type: 3}
+  - {fileID: 2800000, guid: 66ad5b718ab544b4badff003b4f88ec7, type: 3}
+  frameCount: 6
+  pixelsPerUnit: 16
+  idleFramesPerSecond: 6
+  runFramesPerSecond: 10
+  movementThreshold: 0.05
+  characterSortingLayer: Default
 --- !u!114 &3284150856911226178
 MonoBehaviour:
   m_ObjectHideFlags: 0

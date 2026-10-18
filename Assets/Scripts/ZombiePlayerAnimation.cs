@@ -30,6 +30,7 @@ public sealed class ZombiePlayerAnimation : MonoBehaviour
     [SerializeField, Min(0f)] private float movementThreshold = 0.05f;
     [SerializeField] private bool listenForAttackInput = true;
     [SerializeField] private bool useSecondAttack = true;
+    [SerializeField] private string characterSortingLayer = "Default";
 
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D body;
@@ -41,6 +42,9 @@ public sealed class ZombiePlayerAnimation : MonoBehaviour
     private int attackCount, deathCount;
     private float frameClock;
     private bool framesCreated, playingAction, dead;
+    private bool hasExternalMovementState;
+    private bool externallyMoving;
+    private Vector2 externalMovementDirection;
 
     private void Awake()
     {
@@ -62,6 +66,12 @@ public sealed class ZombiePlayerAnimation : MonoBehaviour
         if (spriteRenderer == null) spriteRenderer = GetComponent<SpriteRenderer>();
         if (body == null) body = GetComponent<Rigidbody2D>();
         if (health == null) health = GetComponent<ZombieHealth>();
+        if (spriteRenderer != null && SortingLayer.NameToID(characterSortingLayer) != 0 &&
+            (spriteRenderer.sortingLayerName != characterSortingLayer || spriteRenderer.sortingOrder != short.MaxValue))
+        {
+            spriteRenderer.sortingLayerName = characterSortingLayer;
+            spriteRenderer.sortingOrder = short.MaxValue;
+        }
     }
 
     private void BuildFrames()
@@ -89,9 +99,9 @@ public sealed class ZombiePlayerAnimation : MonoBehaviour
         }
         if (playingAction) return;
 
-        Vector2 velocity = body != null ? body.linearVelocity : Vector2.zero;
-        bool moving = velocity.sqrMagnitude > movementThreshold * movementThreshold;
-        if (moving)
+        Vector2 velocity = hasExternalMovementState ? externalMovementDirection : (body != null ? body.linearVelocity : Vector2.zero);
+        bool moving = hasExternalMovementState ? externallyMoving : velocity.sqrMagnitude > movementThreshold * movementThreshold;
+        if (velocity.sqrMagnitude > movementThreshold * movementThreshold)
         {
             if (Mathf.Abs(velocity.x) > Mathf.Abs(velocity.y))
                 facingIndex = velocity.x < 0f ? 3 : 2;
@@ -129,7 +139,10 @@ public sealed class ZombiePlayerAnimation : MonoBehaviour
     /// <summary>Updates the direction used by idle, walk, and attack animations.</summary>
     public void SetMovementDirection(Vector2 direction)
     {
-        if (direction.sqrMagnitude <= movementThreshold * movementThreshold) return;
+        hasExternalMovementState = true;
+        externalMovementDirection = direction;
+        externallyMoving = direction.sqrMagnitude > movementThreshold * movementThreshold;
+        if (!externallyMoving) return;
 
         if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
             facingIndex = direction.x < 0f ? 3 : 2;
@@ -154,6 +167,8 @@ public sealed class ZombiePlayerAnimation : MonoBehaviour
     public float PlayDeath()
     {
         if (dead) return GetDeathDuration();
+        StopAllCoroutines();
+        playingAction = false;
         BuildFrames();
         dead = true;
         int sequence = deathCount++ % 2;

@@ -1,18 +1,15 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class ZombieFollow : MonoBehaviour
 {
     [SerializeField] private float followSpeed = 6f;
     [SerializeField] private float stopDistance = 1.5f;
-    [SerializeField] private float testDamage = 25f;
-    [SerializeField] private float attackInterval = 1.25f;
 
     private Transform leader;
+    private Rigidbody2D leaderBody;
     private Transform attackTarget;
     private bool isFollowing;
-    private bool spent;
     private bool shielding;
     private float shieldTimer;
     private float orbitRadius;
@@ -22,7 +19,7 @@ public class ZombieFollow : MonoBehaviour
     private float attackTimer;
     private float attackSpeed;
     private bool isDying;
-    private float nextAttackTime;
+    private bool deathCounted;
     private bool holdingSlot;
     private Vector2 slotOffset;
     private ZombieHealth health;
@@ -34,134 +31,143 @@ public class ZombieFollow : MonoBehaviour
     public void StartFollowing(Transform playerTransform)
     {
         leader = playerTransform;
+        leaderBody = playerTransform != null ? playerTransform.GetComponent<Rigidbody2D>() : null;
         isFollowing = true;
         health = GetComponent<ZombieHealth>();
         body = GetComponent<Rigidbody2D>();
         animationDriver = GetComponent<ZombiePlayerAnimation>();
-        nextAttackTime = Time.time;
+        if (body != null)
+        {
+            body.linearVelocity = Vector2.zero;
+            body.angularVelocity = 0f;
+            body.bodyType = RigidbodyType2D.Kinematic;
+            body.interpolation = RigidbodyInterpolation2D.Interpolate;
+        }
 
-        Horde horde = playerTransform.GetComponent<Horde>();
+        Horde horde = playerTransform != null ? playerTransform.GetComponent<Horde>() : null;
         if (horde != null)
         {
             horde.Register(this);
             slotOffset = horde.AssignSlot();
             holdingSlot = true;
         }
-            
     }
 
-    private void Start()
+    private void Awake()
     {
-        body = GetComponent<Rigidbody2D>();
-        animationDriver = GetComponent<ZombiePlayerAnimation>();
+        CacheComponents();
     }
 
     private void Update()
     {
-        if (leader == null || Time.timeScale == 0f || isDying) return;
-
-        if (Keyboard.current != null && Keyboard.current.kKey.wasPressedThisFrame && health != null)
-            health.TakeDamage(testDamage);
+        if (isDying) return;
 
         if (health != null && health.currentHealth <= 0f)
         {
-            if (!spent)
-            {
-                if (Tracker.Instance != null)
-                    Tracker.Instance.RemoveZombie();
-                spent = true;
-            }
-
-            Horde horde = leader.GetComponent<Horde>();
-            if (horde != null)
-            {
-                ReleaseMySlot();
-                horde.Unregister(this);
-            }
-               
-
-            StartCoroutine(PlayDeathThenDisable());
+            BeginDeath();
             return;
         }
 
         if (shielding)
         {
             shieldTimer -= Time.deltaTime;
-            if (shieldTimer <= 0f)
-            {
-                gameObject.SetActive(false);
-                return;
-            }
-
-            angle += orbitSpeed * Time.deltaTime;
-            Vector2 offset = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * orbitRadius;
-            Vector2 nextPosition = (Vector2)leader.position + offset;
-            if (animationDriver != null)
-                animationDriver.SetMovementDirection(nextPosition - (Vector2)transform.position);
-            transform.position = nextPosition;
+            if (shieldTimer <= 0f) gameObject.SetActive(false);
             return;
         }
 
         if (attacking)
         {
             attackTimer -= Time.deltaTime;
-            if (attackTimer <= 0f || attackTarget == null)
-            {
-                gameObject.SetActive(false);
-                return;
-            }
-
-            Vector2 currentPosition = transform.position;
-            Vector2 nextPosition = Vector2.MoveTowards(currentPosition, attackTarget.position, attackSpeed * Time.deltaTime);
-            if (animationDriver != null)
-                animationDriver.SetMovementDirection(nextPosition - currentPosition);
-            transform.position = nextPosition;
-            if (Vector2.Distance(transform.position, attackTarget.position) <= 0.4f)
-            {
-                Pinned pinned = attackTarget.GetComponent<Pinned>();
-                if (pinned == null)
-                    pinned = attackTarget.gameObject.AddComponent<Pinned>();
-                pinned.Hold();
-            }
-            return;
+            if (attackTimer <= 0f || attackTarget == null) gameObject.SetActive(false);
         }
     }
 
     private void FixedUpdate()
     {
-        if (!isFollowing || leader == null || isDying || shielding || attacking) return;
+        if (isDying || body == null) return;
 
-        Vector2 current = body != null ? body.position : (Vector2)transform.position;
-        // If the zombie is not following or is dying, it will not move.
-        Vector2 goal = (Vector2)leader.position + slotOffset; // The goal position is the leader's position plus the slot offset.
-        float distance = Vector2.Distance(current, goal);
-
-        // If the zombie is close enough to the goal, it will stop moving and attack if possible.
-        if (distance <= 0.3f)
+        if (shielding && leader != null)
         {
-            if (animationDriver != null && Time.time >= nextAttackTime)
+            angle += orbitSpeed * Time.fixedDeltaTime;
+            Vector2 destination = GetLeaderPosition() + new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * orbitRadius;
+            MoveFollower(destination);
+            return;
+        }
+
+        if (attacking && attackTarget != null)
+        {
+            Vector2 destination = Vector2.MoveTowards(body.position, attackTarget.position, attackSpeed * Time.fixedDeltaTime);
+            MoveFollower(destination);
+            if (Vector2.Distance(destination, attackTarget.position) <= 0.4f)
             {
-                animationDriver.PlayAttack();
-                nextAttackTime = Time.time + attackInterval;
+                Pinned pinned = attackTarget.GetComponent<Pinned>();
+                if (pinned == null) pinned = attackTarget.gameObject.AddComponent<Pinned>();
+                pinned.Hold();
             }
             return;
         }
 
-        // If the zombie is too far from the goal, it will move towards it.
+        if (!isFollowing || leader == null) return;
+
+        Vector2 current = body.position;
+        Vector2 goal = GetLeaderPosition() + slotOffset;
+        Vector2 delta = goal - current;
+        if (delta.sqrMagnitude <= stopDistance * stopDistance)
+        {
+            animationDriver?.SetMovementDirection(Vector2.zero);
+            return;
+        }
+
         Vector2 next = Vector2.MoveTowards(current, goal, followSpeed * Time.fixedDeltaTime);
-        if (animationDriver != null)
-            animationDriver.SetMovementDirection(next - current);
+        MoveFollower(next);
+    }
+
+    private void MoveFollower(Vector2 destination)
+    {
+        Vector2 direction = destination - body.position;
+        animationDriver?.SetMovementDirection(direction);
+        body.MovePosition(destination);
+    }
+
+    private Vector2 GetLeaderPosition()
+    {
+        return leaderBody != null ? leaderBody.position : (Vector2)leader.position;
+    }
+
+    private void BeginDeath()
+    {
+        if (isDying) return;
+        isDying = true;
+        isFollowing = false;
+        shielding = false;
+        attacking = false;
+        attackTarget = null;
+
+        ReleaseMySlot();
+        if (leader != null)
+        {
+            Horde horde = leader.GetComponent<Horde>();
+            if (horde != null) horde.Unregister(this);
+        }
+        leader = null;
+        leaderBody = null;
+
+        if (transform.parent != null) transform.SetParent(null, true);
         if (body != null)
-            body.MovePosition(next);
-        else
-            transform.position = next;
+        {
+            body.linearVelocity = Vector2.zero;
+            body.angularVelocity = 0f;
+        }
+        if (!deathCounted && Tracker.Instance != null)
+        {
+            Tracker.Instance.RemoveZombie();
+            deathCounted = true;
+        }
+        StartCoroutine(PlayDeathThenDisable());
     }
 
     private IEnumerator PlayDeathThenDisable()
     {
-        isDying = true;
-        isFollowing = false;
-        if (body != null) body.linearVelocity = Vector2.zero;
         float duration = animationDriver != null ? animationDriver.PlayDeath() : 0.6f;
         yield return new WaitForSeconds(Mathf.Max(0.1f, duration));
         gameObject.SetActive(false);
@@ -170,22 +176,23 @@ public class ZombieFollow : MonoBehaviour
     public void MarkSpent()
     {
         ReleaseMySlot();
-        spent = true;
         isFollowing = false;
+        animationDriver?.SetMovementDirection(Vector2.zero);
     }
 
-    void ReleaseMySlot()
+    private void ReleaseMySlot()
     {
         if (!holdingSlot || leader == null) return;
-
         Horde horde = leader.GetComponent<Horde>();
-        if (horde != null)
-        {
-            horde.ReleaseSlot(slotOffset);
-        }
-
+        if (horde != null) horde.ReleaseSlot(slotOffset);
         holdingSlot = false;
-        
+    }
+
+    private void CacheComponents()
+    {
+        if (health == null) health = GetComponent<ZombieHealth>();
+        if (body == null) body = GetComponent<Rigidbody2D>();
+        if (animationDriver == null) animationDriver = GetComponent<ZombiePlayerAnimation>();
     }
 
     public void StartShield(float duration, float radius, float speed, float startAngle)
@@ -203,7 +210,5 @@ public class ZombieFollow : MonoBehaviour
         attacking = true;
         attackTimer = duration;
         attackSpeed = speed;
-        if (animationDriver == null) animationDriver = GetComponent<ZombiePlayerAnimation>();
-        if (animationDriver != null) animationDriver.PlayAttack();
     }
 }

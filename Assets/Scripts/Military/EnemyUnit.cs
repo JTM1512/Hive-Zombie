@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class EnemyUnit : MonoBehaviour
 {
+    [SerializeField] private string characterSortingLayer = "Default";
     [SerializeField] float health;
     [SerializeField] float damage;
     [SerializeField] float speed;
@@ -16,8 +17,14 @@ public class EnemyUnit : MonoBehaviour
     Enemies owner;
     Transform target;
 
+    void Awake()
+    {
+        ApplyCharacterSorting();
+    }
+
     public void Setup(Tiers tier, Enemies spawner)
     {
+        ApplyCharacterSorting();
         owner = spawner;
         health = tier.health;
         damage = tier.damage;
@@ -27,6 +34,17 @@ public class EnemyUnit : MonoBehaviour
         range = tier.range;
         cooldown = tier.cooldown;
         attackTimer = cooldown;
+    }
+
+    void ApplyCharacterSorting()
+    {
+        if (SortingLayer.NameToID(characterSortingLayer) == 0) return;
+        SpriteRenderer[] renderers = GetComponentsInChildren<SpriteRenderer>(true);
+        foreach (SpriteRenderer sprite in renderers)
+        {
+            sprite.sortingLayerName = characterSortingLayer;
+            sprite.sortingOrder = short.MaxValue;
+        }
     }
 
     void Update()
