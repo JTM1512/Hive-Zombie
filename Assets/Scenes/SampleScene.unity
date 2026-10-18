@@ -756,7 +756,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZombieHunger
   maxHunger: 100
-  hungerDecreaseRate: 1
+  hungerDecreaseRate: 4
   starveDamagePerSecond: 4
   testFoodValue: 25
   testHeal: 20
@@ -336134,9 +336134,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShieldAbility
   cost: 4
-  shieldDuration: 5
-  radius: 5
-  orbitSpeed: 3
+  shieldDuration: 7
+  radius: 2
+  orbitSpeed: 2.5
 --- !u!114 &6100000103
 MonoBehaviour:
   m_ObjectHideFlags: 0
