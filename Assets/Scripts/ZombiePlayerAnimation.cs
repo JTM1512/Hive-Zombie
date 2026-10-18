@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(SpriteRenderer), typeof(Rigidbody2D))]
 public sealed class ZombiePlayerAnimation : MonoBehaviour
@@ -88,9 +87,6 @@ public sealed class ZombiePlayerAnimation : MonoBehaviour
             PlayDeath();
             return;
         }
-        bool attackPressed = Keyboard.current != null && Keyboard.current.enterKey.wasPressedThisFrame;
-        attackPressed |= Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame;
-        if (listenForAttackInput && attackPressed) PlayAttack();
         if (playingAction) return;
 
         Vector2 velocity = body != null ? body.linearVelocity : Vector2.zero;
@@ -128,6 +124,17 @@ public sealed class ZombiePlayerAnimation : MonoBehaviour
         frameIndex = 0;
         frameClock = 0f;
         ShowIdleFrame();
+    }
+
+    /// <summary>Updates the direction used by idle, walk, and attack animations.</summary>
+    public void SetMovementDirection(Vector2 direction)
+    {
+        if (direction.sqrMagnitude <= movementThreshold * movementThreshold) return;
+
+        if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+            facingIndex = direction.x < 0f ? 3 : 2;
+        else
+            facingIndex = direction.y > 0f ? 1 : 0;
     }
 
     /// <summary>Plays the first and second attack sheets in alternation.</summary>

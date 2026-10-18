@@ -84,7 +84,10 @@ public class ZombieFollow : MonoBehaviour
 
             angle += orbitSpeed * Time.deltaTime;
             Vector2 offset = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * orbitRadius;
-            transform.position = (Vector2)leader.position + offset;
+            Vector2 nextPosition = (Vector2)leader.position + offset;
+            if (animationDriver != null)
+                animationDriver.SetMovementDirection(nextPosition - (Vector2)transform.position);
+            transform.position = nextPosition;
             return;
         }
 
@@ -97,7 +100,11 @@ public class ZombieFollow : MonoBehaviour
                 return;
             }
 
-            transform.position = Vector2.MoveTowards(transform.position, attackTarget.position, attackSpeed * Time.deltaTime);
+            Vector2 currentPosition = transform.position;
+            Vector2 nextPosition = Vector2.MoveTowards(currentPosition, attackTarget.position, attackSpeed * Time.deltaTime);
+            if (animationDriver != null)
+                animationDriver.SetMovementDirection(nextPosition - currentPosition);
+            transform.position = nextPosition;
             if (Vector2.Distance(transform.position, attackTarget.position) <= 0.4f)
             {
                 Pinned pinned = attackTarget.GetComponent<Pinned>();
@@ -126,6 +133,8 @@ public class ZombieFollow : MonoBehaviour
         }
 
         Vector2 next = Vector2.MoveTowards(current, leader.position, followSpeed * Time.fixedDeltaTime);
+        if (animationDriver != null)
+            animationDriver.SetMovementDirection(next - current);
         if (body != null)
             body.MovePosition(next);
         else

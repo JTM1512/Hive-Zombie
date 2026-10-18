@@ -34,7 +34,14 @@ public class ZombieBite : MonoBehaviour
             {
                 continue; // Skip if the collider is a civilian
             }
+            bool wasTurned = civilian.HasTurned;
             civilian.getBitten(hunger); // Call the getBitten method on the civilian, passing the zombie's hunger
+            if (!wasTurned && civilian.HasTurned)
+            {
+                ZombiePlayerAnimation animationDriver = GetComponent<ZombiePlayerAnimation>();
+                if (animationDriver != null)
+                    animationDriver.PlayAttack();
+            }
             break;
         }
     }
