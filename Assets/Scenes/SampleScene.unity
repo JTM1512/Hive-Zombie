@@ -2465,6 +2465,7 @@ GameObject:
   - component: {fileID: 756302663}
   - component: {fileID: 6000000223}
   - component: {fileID: 6000000300}
+  - component: {fileID: 6000000302}
   m_Layer: 0
   m_Name: z4
   m_TagString: Untagged
@@ -334758,6 +334759,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7efaad6b75ba0364cb65134ff2c2e7cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tracker
+--- !u!114 &6000000302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756302658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ee77da71c295d54b8b093499f5f74e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CivilianMovement
+  noticeRange: 6
+  fleeSpeed: 3.5
+  wanderSpeed: 1.5
 --- !u!114 &6100000101
 MonoBehaviour:
   m_ObjectHideFlags: 0
