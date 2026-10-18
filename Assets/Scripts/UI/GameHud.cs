@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameHud : MonoBehaviour
@@ -8,8 +9,25 @@ public class GameHud : MonoBehaviour
     readonly List<AbilityRow> rows = new List<AbilityRow>();
     TextMeshProUGUI zombieCountText;
 
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    static void RegisterSceneHook()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
     static void EnsureHud()
+    {
+        TryCreateHud();
+    }
+
+    static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        TryCreateHud();
+    }
+
+    static void TryCreateHud()
     {
         PlayerMovement player = FindAnyObjectByType<PlayerMovement>();
         if (player == null) return;
