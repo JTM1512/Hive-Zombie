@@ -23,6 +23,8 @@ public class ZombieFollow : MonoBehaviour
     private float attackSpeed;
     private bool isDying;
     private float nextAttackTime;
+    private bool holdingSlot;
+    private Vector2 slotOffset;
     private ZombieHealth health;
     private Rigidbody2D body;
     private ZombiePlayerAnimation animationDriver;
@@ -40,7 +42,12 @@ public class ZombieFollow : MonoBehaviour
 
         Horde horde = playerTransform.GetComponent<Horde>();
         if (horde != null)
+        {
             horde.Register(this);
+            slotOffset = horde.AssignSlot();
+            holdingSlot = true;
+        }
+            
     }
 
     private void Start()
@@ -67,7 +74,11 @@ public class ZombieFollow : MonoBehaviour
 
             Horde horde = leader.GetComponent<Horde>();
             if (horde != null)
+            {
+                ReleaseMySlot();
                 horde.Unregister(this);
+            }
+               
 
             StartCoroutine(PlayDeathThenDisable());
             return;
@@ -121,8 +132,12 @@ public class ZombieFollow : MonoBehaviour
         if (!isFollowing || leader == null || isDying || shielding || attacking) return;
 
         Vector2 current = body != null ? body.position : (Vector2)transform.position;
-        float distance = Vector2.Distance(current, leader.position);
-        if (distance <= stopDistance)
+        // If the zombie is not following or is dying, it will not move.
+        Vector2 goal = (Vector2)leader.position + slotOffset; // The goal position is the leader's position plus the slot offset.
+        float distance = Vector2.Distance(current, goal);
+
+        // If the zombie is close enough to the goal, it will stop moving and attack if possible.
+        if (distance <= 0.3f)
         {
             if (animationDriver != null && Time.time >= nextAttackTime)
             {
@@ -132,7 +147,8 @@ public class ZombieFollow : MonoBehaviour
             return;
         }
 
-        Vector2 next = Vector2.MoveTowards(current, leader.position, followSpeed * Time.fixedDeltaTime);
+        // If the zombie is too far from the goal, it will move towards it.
+        Vector2 next = Vector2.MoveTowards(current, goal, followSpeed * Time.fixedDeltaTime);
         if (animationDriver != null)
             animationDriver.SetMovementDirection(next - current);
         if (body != null)
@@ -153,8 +169,23 @@ public class ZombieFollow : MonoBehaviour
 
     public void MarkSpent()
     {
+        ReleaseMySlot();
         spent = true;
         isFollowing = false;
+    }
+
+    void ReleaseMySlot()
+    {
+        if (!holdingSlot || leader == null) return;
+
+        Horde horde = leader.GetComponent<Horde>();
+        if (horde != null)
+        {
+            horde.ReleaseSlot(slotOffset);
+        }
+
+        holdingSlot = false;
+        
     }
 
     public void StartShield(float duration, float radius, float speed, float startAngle)

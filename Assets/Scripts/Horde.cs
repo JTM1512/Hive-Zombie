@@ -4,15 +4,23 @@ using UnityEngine.InputSystem;
 
 public class Horde : MonoBehaviour
 {
+    int nextSlot;
+
     readonly List<ZombieFollow> freeZombies = new List<ZombieFollow>();
 
+    readonly List<Vector2> slots = new List<Vector2>();
+
+
     // A new follower is added to the list of free zombies. This allows the horde to keep track of all available zombies that can be assigned to follow the player.
-    public void Register(ZombieFollow zombie)
+    public int Register(ZombieFollow zombie)
     {
         if (!freeZombies.Contains(zombie))
         {
             freeZombies.Add(zombie);
+            nextSlot++;
         }
+
+        return nextSlot - 1;
     }
 
     // A follower is removed from the list of free zombies. This allows the horde to keep track of all available zombies that can be assigned to follow the player.
@@ -42,6 +50,45 @@ public class Horde : MonoBehaviour
 
         return true;
 
+    }
+
+    public Vector2 AssignSlot() 
+    { 
+        float gap = 1.1f; // Adjust this value to control the spacing between zombies
+        float minRadius = 1.4f; // Minimum radius for the first zombie
+
+        for (int attempt = 0; attempt < 40; attempt++)
+        {
+            float reach = 4f + slots.Count * 0.2f; // Increase reach as more zombies are added
+            float radius = Random.Range(minRadius, reach);
+            float angle = Random.Range(0f, Mathf.PI * 2f);
+            Vector2 spot = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * radius;
+
+            bool blocked = false;
+            foreach (Vector2 other in slots)
+            {
+                if (Vector2.Distance(spot, other) < gap)
+                {
+                    blocked = true;
+                    break;
+                }
+            }
+
+            if (blocked) continue;
+
+            slots.Add(spot);
+            return spot;
+        }
+
+        // If no valid spot was found after 40 attempts, place the zombie in a fallback position that is further away from the center.
+        Vector2 fallback = Random.insideUnitCircle.normalized * (minRadius + slots.Count * 0.35f);
+        slots.Add(fallback);
+        return fallback;
+    }
+
+    public void ReleaseSlot(Vector2 slot)
+    {
+        slots.Remove(slot);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

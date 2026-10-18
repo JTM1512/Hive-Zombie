@@ -272,5 +272,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CivilianMovement
   noticeRange: 6
-  fleeSpeed: 3.5
+  fleeSpeed: 3
   wanderSpeed: 1.5

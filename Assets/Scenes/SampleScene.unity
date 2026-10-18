@@ -548,8 +548,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZombieHunger
   maxHunger: 100
-  hungerDecreaseRate: 2
-  starveDamagePerSecond: 5
+  hungerDecreaseRate: 1
+  starveDamagePerSecond: 4
   testFoodValue: 25
   testHeal: 20
   hungerBar: {fileID: 930278240}
