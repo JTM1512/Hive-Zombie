@@ -1280,7 +1280,7 @@ MonoBehaviour:
 
     <b>BITE</b>    E, while next to a civilian
 
-    <b>PAUSE</b>   Escape
+    <b>PAUSE</b>   Escape or P
 
     Hunger falls on its own. Bite civilians before it runs out.'
   m_isRightToLeft: 0

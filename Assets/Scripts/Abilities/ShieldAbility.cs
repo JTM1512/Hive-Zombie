@@ -2,8 +2,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class ShieldAbility : MonoBehaviour
+public class ShieldAbility : MonoBehaviour, IAbilityInfo
 {
+    public string DisplayName => "Shield";
+    public string KeyLabel => "1";
+    public int ZombieCost => cost;
     [SerializeField] int cost = 4; // The number of zombies required to activate the shield ability
     [SerializeField] float shieldDuration = 5f; // Duration of the shield in seconds
     [SerializeField] float radius = 5f; // Radius of the shield effect
@@ -20,6 +23,7 @@ public class ShieldAbility : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Time.timeScale <= 0f) return;
         if (Keyboard.current == null || !Keyboard.current.digit1Key.wasPressedThisFrame) return;
 
         List<ZombieFollow> spent = new List<ZombieFollow>();
