@@ -21,6 +21,8 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
+        if (GameOverMenu.IsShown)
+            return;
         if (Keyboard.current != null &&
             (Keyboard.current.escapeKey.wasPressedThisFrame || Keyboard.current.pKey.wasPressedThisFrame))
             SetPaused(!paused);

@@ -30,6 +30,8 @@ public class ZombieBite : MonoBehaviour
         foreach (Collider2D hit in hits)
         {
             Civilian civilian = hit.GetComponent<Civilian>(); // Check if the collider has a Civilian component
+
+            // Check if marked civilian is an already turned zombie
             if (civilian == null || civilian.HasTurned)
             {
                 continue; // Skip if the collider is a civilian

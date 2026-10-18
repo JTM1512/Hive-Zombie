@@ -37,6 +37,14 @@ public class ZombieHealth : MonoBehaviour
         health = Mathf.Max(0f, health - amount);
         if (health > 0f) return;
 
+        // The player has no follower script. This is their death.
+        if (GetComponent<PlayerMovement>() != null)
+        {
+            if (GameOverMenu.Instance != null)
+                GameOverMenu.Instance.Show();
+            return;
+        }
+
         ZombieFollow follow = GetComponent<ZombieFollow>();
         if (follow == null || !follow.IsFollowing) return;
 
