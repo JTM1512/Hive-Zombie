@@ -26,15 +26,6 @@ public class EnemyUnit : MonoBehaviour
     [SerializeField, Min(0.1f)] float bulletTravelSpeed = 14f;
     [SerializeField] float blastRadius = 2f;
     [SerializeField] float grenadeFuse = 1f;
-    [SerializeField] Sprite[] meleeIdleFrames;
-    [SerializeField] Sprite[] meleeWalkFrames;
-    [SerializeField] float meleeIdleFrameDuration = 0.25f;
-    [SerializeField] float meleeWalkFrameDuration = 0.12f;
-    [SerializeField] Sprite[] rangeRunFrames;
-    [SerializeField] Sprite[] rangeFireFrames;
-    [SerializeField] Sprite[] robotRunFrames;
-    [SerializeField] Sprite[] robotFireFrames;
-    [SerializeField] float rangedFrameDuration = 0.12f;
 
     float attackTimer;
     float animationTimer;
@@ -43,13 +34,6 @@ public class EnemyUnit : MonoBehaviour
     bool turned;
     Enemies owner;
     Transform target;
-    EnemyLook look = EnemyLook.Placeholder;
-    SpriteRenderer spriteRenderer;
-    bool wasMoving;
-    int animationFrame;
-    float animationTimer;
-
-    enum EnemyLook { Placeholder, Baton, Range, Robot }
     SpriteRenderer spriteRenderer;
     EnemyLook look = EnemyLook.Placeholder;
 
@@ -86,20 +70,6 @@ public class EnemyUnit : MonoBehaviour
 
         if ((look == EnemyLook.Range || look == EnemyLook.Robot) && spriteRenderer != null)
             spriteRenderer.color = Color.white;
-        look = LookFor(attackType);
-    }
-
-    static EnemyLook LookFor(AttackType type)
-    {
-        switch (type)
-        {
-            case AttackType.Baton:
-                return EnemyLook.Baton;
-            case AttackType.Grenade:
-                return EnemyLook.Robot;
-            default:
-                return EnemyLook.Range;
-        }
     }
 
     void ApplyCharacterSorting()
