@@ -65,6 +65,9 @@ public class AttackAbility : MonoBehaviour, IAbilityInfo
         EnemyUnit[] enemies = FindObjectsByType<EnemyUnit>(FindObjectsSortMode.None);
         foreach (EnemyUnit enemy in enemies)
         {
+            if (enemy.HasTurned)
+                continue;
+
             float distance = Vector2.Distance(transform.position, enemy.transform.position);
             if (distance >= bestDistance)
             {

@@ -10,31 +10,22 @@ public class EnemyUnit : MonoBehaviour
     [SerializeField] AttackType attackType;
     [SerializeField] float range;
     [SerializeField] float cooldown;
-    [SerializeField] Sprite[] meleeIdleFrames;
-    [SerializeField] Sprite[] meleeWalkFrames;
-    [SerializeField, Min(0.01f)] float meleeIdleFrameDuration = 0.25f;
-    [SerializeField, Min(0.01f)] float meleeWalkFrameDuration = 0.12f;
-    [SerializeField] Sprite[] rangeRunFrames;
-    [SerializeField] Sprite[] rangeFireFrames;
-    [SerializeField] Sprite[] robotRunFrames;
-    [SerializeField] Sprite[] robotFireFrames;
-    [SerializeField] Sprite bulletSprite;
-    [SerializeField, Min(0.1f)] float rangedFrameDuration = 0.12f;
-    [SerializeField, Min(0.1f)] float bulletTravelSpeed = 14f;
+    [SerializeField] float food = 25f;
+    [SerializeField] float heal = 20f;
+    [SerializeField] float zombieHealth = 50f;
+    [SerializeField] float bulletSpeed = 18f;
+    [SerializeField] float blastRadius = 2f;
+    [SerializeField] float grenadeFuse = 1f;
 
     float attackTimer;
-    float animationTimer;
-    int animationFrame;
-    bool wasMoving;
-    SpriteRenderer spriteRenderer;
-    float fuse;
-    Vector2 blastPoint;
-    bool grenadeLive;
+    bool turned;
     Enemies owner;
     Transform target;
     EnemyLook look = EnemyLook.Placeholder;
 
     enum EnemyLook { Placeholder, Baton, Range, Robot }
+
+    public bool HasTurned => turned;
 
     void Awake()
     {
@@ -53,16 +44,7 @@ public class EnemyUnit : MonoBehaviour
         attackType = tier.attackType;
         range = tier.range;
         cooldown = tier.cooldown;
-        attackTimer = cooldown;
-        if (tier.tierName != null && tier.tierName.IndexOf("Stronger cops", System.StringComparison.OrdinalIgnoreCase) >= 0)
-            look = EnemyLook.Range;
-        else if (tier.tierName != null && tier.tierName.IndexOf("military", System.StringComparison.OrdinalIgnoreCase) >= 0)
-            look = EnemyLook.Robot;
-        else if (attackType == AttackType.Baton)
-            look = EnemyLook.Baton;
-
-        if ((look == EnemyLook.Range || look == EnemyLook.Robot) && spriteRenderer != null)
-            spriteRenderer.color = Color.white;
+        attackTimer = 0f;
     }
 
     void ApplyCharacterSorting()
@@ -75,23 +57,52 @@ public class EnemyUnit : MonoBehaviour
         }
     }
 
+    public void getBitten(ZombieHunger zombieHunger)
+    {
+        if (turned || zombieHunger == null) return;
+        turned = true;
+
+        zombieHunger.Eat(food, heal);
+        if (owner != null)
+            owner.NotifyDeath();
+
+        if (GetComponent<Rigidbody2D>() == null)
+            gameObject.AddComponent<Rigidbody2D>();
+
+        ZombieHealth healthComponent = GetComponent<ZombieHealth>();
+        if (healthComponent == null)
+            healthComponent = gameObject.AddComponent<ZombieHealth>();
+        healthComponent.SetHealth(zombieHealth);
+
+        ZombieFollow follow = GetComponent<ZombieFollow>();
+        if (follow == null)
+            follow = gameObject.AddComponent<ZombieFollow>();
+        follow.StartFollowing(zombieHunger.transform);
+
+        Collider2D body = GetComponent<Collider2D>();
+        if (body != null)
+            body.isTrigger = true;
+
+        SpriteRenderer sprite = GetComponent<SpriteRenderer>();
+        if (sprite != null)
+            sprite.color = Color.white;
+
+        ZombiePlayerAnimation animationDriver = GetComponent<ZombiePlayerAnimation>();
+        if (animationDriver != null)
+            animationDriver.StartZombieAnimations();
+
+        if (Tracker.Instance != null)
+            Tracker.Instance.AddZombie();
+
+        enabled = false;
+    }
+
     void Update()
     {
-        if (target == null)
+        if (turned || target == null)
             return;
         Pinned pinned = GetComponent<Pinned>();
         if (pinned != null && pinned.IsPinned) return;
-
-
-        if (grenadeLive)
-        {
-            fuse -= Time.deltaTime;
-            if (fuse <= 0f)
-            {
-                grenadeLive = false;
-                DamageCircle(blastPoint, 2f);
-            }
-        }
 
         float distance = Vector2.Distance(transform.position, target.position);
         bool moving = distance > range;
@@ -166,15 +177,13 @@ public class EnemyUnit : MonoBehaviour
                 break;
             case AttackType.Pistol:
             case AttackType.Rifle:
-                HitRay(false);
+                Fire(DirectionToTarget());
                 break;
             case AttackType.Burst:
-                HitBurst();
+                FireBurst();
                 break;
             case AttackType.Grenade:
-                blastPoint = target.position;
-                fuse = 1f;
-                grenadeLive = true;
+                GrenadeBlast.Throw(this, target, target.position, blastRadius, damage, grenadeFuse);
                 break;
         }
     }
@@ -205,92 +214,32 @@ public class EnemyUnit : MonoBehaviour
         }
     }
 
-    void HitRay(bool pierce)
+    Vector2 DirectionToTarget()
     {
-        Vector2 direction = ((Vector2)target.position - (Vector2)transform.position).normalized;
-        SpawnBullet(direction);
-        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, direction, range);
-
-        foreach (RaycastHit2D hit in hits)
-        {
-            if (hit.transform == transform) continue;
-            if (!TryDamage(hit.collider)) continue;
-
-            if (!pierce) break;
-        }
+        return ((Vector2)target.position - (Vector2)transform.position).normalized;
     }
 
-    void HitBurst()
+    void Fire(Vector2 direction)
     {
-        Vector2 direction = ((Vector2)target.position - (Vector2)transform.position).normalized;
+        if (direction.sqrMagnitude < 0.0001f) return;
+
+        direction.Normalize();
+        const float muzzle = 0.6f;
+        Vector2 origin = (Vector2)transform.position + direction * muzzle;
+        float travel = Mathf.Max(0.1f, range - muzzle);
+        Bullet.Spawn(this, target, origin, direction, travel, bulletSpeed, damage);
+    }
+
+    void FireBurst()
+    {
+        Vector2 direction = DirectionToTarget();
         float[] angles = { -15f, 0f, 15f };
 
         foreach (float angle in angles)
         {
             Vector2 shot = Quaternion.Euler(0f, 0f, angle) * (Vector3)direction;
-            SpawnBullet(shot);
-            RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, shot, range);
-
-            foreach (RaycastHit2D hit in hits)
-            {
-                if (hit.transform == transform) continue;
-                if (TryDamage(hit.collider)) break;
-            }
+            Fire(shot);
         }
-    }
-
-    void SpawnBullet(Vector2 direction)
-    {
-        if (bulletSprite == null || direction.sqrMagnitude < 0.001f) return;
-
-        GameObject projectile = new GameObject("Enemy Bullet");
-        projectile.transform.position = transform.position;
-        projectile.transform.right = direction.normalized;
-        SpriteRenderer renderer = projectile.AddComponent<SpriteRenderer>();
-        renderer.sprite = bulletSprite;
-        renderer.sortingLayerName = characterSortingLayer;
-        renderer.sortingOrder = short.MaxValue;
-        StartCoroutine(MoveBullet(projectile.transform, direction.normalized));
-    }
-
-    IEnumerator MoveBullet(Transform projectile, Vector2 direction)
-    {
-        float distanceTravelled = 0f;
-        while (projectile != null && distanceTravelled < range)
-        {
-            float step = bulletTravelSpeed * Time.deltaTime;
-            projectile.position += (Vector3)(direction * step);
-            distanceTravelled += step;
-            yield return null;
-        }
-        if (projectile != null) Destroy(projectile.gameObject);
-    }
-
-    void DamageCircle(Vector2 point, float radius)
-    {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(point, radius);
-        foreach (Collider2D hit in hits)
-        {
-            if (hit.transform == transform) continue;
-            TryDamage(hit);
-        }
-    }
-
-    // A shot or blast damages another soldier it hits, and the attacker is skipped.
-    bool TryDamage(Collider2D collider)
-    {
-        ZombieHealth zombie = collider.GetComponent<ZombieHealth>();
-        if (CanHurt(zombie))
-        {
-            zombie.TakeDamage(damage);
-            return true;
-        }
-
-        EnemyUnit ally = collider.GetComponent<EnemyUnit>();
-        if (ally == null || ally == this) return false;
-
-        ally.TakeDamage(damage);
-        return true;
     }
 
     bool CanHurt(ZombieHealth zombie)
@@ -304,6 +253,8 @@ public class EnemyUnit : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
+        if (turned) return;
+
         health = Mathf.Max(0f, health - amount);
         if (health > 0f) return;
 
