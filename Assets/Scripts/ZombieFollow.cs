@@ -106,7 +106,7 @@ public class ZombieFollow : MonoBehaviour
             Vector2 displacement = (Vector2)attackTarget.position - body.position;
             float step = Mathf.Min(displacement.magnitude, attackSpeed * Time.fixedDeltaTime);
             Vector2 destination = MoveInDirection(displacement, step);
-            if (Vector2.Distance(destination, attackTarget.position) <= 0.4f)
+            if (Vector2.Distance(destination, attackTarget.position) <= 1.2f)
             {
                 Pinned pinned = attackTarget.GetComponent<Pinned>();
                 if (pinned == null) pinned = attackTarget.gameObject.AddComponent<Pinned>();
@@ -234,6 +234,9 @@ public class ZombieFollow : MonoBehaviour
         if (hitCollider == null || hitCollider.isTrigger || hitCollider.attachedRigidbody == body)
             return false;
         if (leader != null && (hitCollider.transform == leader || hitCollider.transform.IsChildOf(leader)))
+            return false;
+        // The person being chased is the target, not a wall.
+        if (attackTarget != null && (hitCollider.transform == attackTarget || hitCollider.transform.IsChildOf(attackTarget)))
             return false;
         return hitCollider.GetComponentInParent<ZombieFollow>() == null;
     }
