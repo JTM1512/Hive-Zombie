@@ -226,6 +226,10 @@ GameObject:
   - component: {fileID: 251126379}
   - component: {fileID: 251126380}
   - component: {fileID: 6000000222}
+  - component: {fileID: 6100000101}
+  - component: {fileID: 6100000102}
+  - component: {fileID: 6100000103}
+  - component: {fileID: 6100000104}
   m_Layer: 0
   m_Name: z1_1
   m_TagString: Untagged
@@ -339133,3 +339137,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7efaad6b75ba0364cb65134ff2c2e7cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tracker
+
+--- !u!114 &6100000101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251126371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f529f3fa155a779498cf3456c9587dc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Horde
+
+--- !u!114 &6100000102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251126371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0416388ae82ad564689eeaa3f4192857, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShieldAbility
+  cost: 4
+  shieldDuration: 5
+  radius: 5
+  orbitSpeed: 3
+
+--- !u!114 &6100000103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251126371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b0da49ac34fba4b8e0bd18710f26ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SacrificeAbility
+  sacrificeCost: 3
+  foodValue: 25
+  healValue: 20
+
+--- !u!114 &6100000104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251126371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afb7dc22739f1e94d89f0e3a991754e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AttackAbility
+  cost: 2
+  searchRange: 8
+  duration: 5
+  chargeSpeed: 8

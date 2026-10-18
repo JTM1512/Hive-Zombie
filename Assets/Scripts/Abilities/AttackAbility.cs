@@ -2,8 +2,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class AttackAbility : MonoBehaviour
+public class AttackAbility : MonoBehaviour, IAbilityInfo
 {
+    public string DisplayName => "Attack";
+    public string KeyLabel => "3";
+    public int ZombieCost => cost;
     [SerializeField] int cost = 2;
     [SerializeField] float searchRange = 8f;
     [SerializeField] float duration = 5f;
@@ -19,6 +22,7 @@ public class AttackAbility : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Time.timeScale <= 0f) return;
         if (Keyboard.current == null || !Keyboard.current.digit3Key.wasPressedThisFrame) return;
 
         //No target in range so don't spend any zombies
