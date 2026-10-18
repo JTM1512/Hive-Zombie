@@ -775,6 +775,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ZombieHealth
   maxHealth: 100
   healthBar: {fileID: 699574737}
+  damageFlashDuration: 0.12
 --- !u!114 &251126379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -893,7 +894,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &276449704
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4216,6 +4217,8 @@ MonoBehaviour:
     range: 6
     cooldown: 4
   spawnInterval: 3
+  minimumSpawnInterval: 2
+  spawnIntervalDecreasePerMinute: 0.5
   maxAlive: 20
   spawnPoints:
   - {fileID: 501377502}

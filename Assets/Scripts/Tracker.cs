@@ -7,27 +7,20 @@ public class Tracker : MonoBehaviour
     public int Count{ get; private set; } = 1;
     public event Action<int> CountChanged;
 
-    // Highest horde ever reached. Stays saved after you restart.
-    public int Best { get; private set; }
-    const string BestKey = "BestHorde";
+    // Biggest horde in this run. A restart starts this at 1 again.
+    public int Best { get; private set; } = 1;
 
     void Awake()
     {
         Instance = this;
-        Best = PlayerPrefs.GetInt(BestKey, 1);
+        
     }
     public void AddZombie()
     {
         Count++;
-
-        // Only save when this horde is bigger than the old record.
+        // This run's biggest horde so far.
         if (Count > Best)
-        {
             Best = Count;
-            PlayerPrefs.SetInt(BestKey, Best);
-            PlayerPrefs.Save();
-        }
-
         CountChanged?.Invoke(Count);
     }
     public void RemoveZombie()
