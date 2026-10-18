@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
+// A bitten civilian. Follows you, circles for the shield, or chases for the attack.
 public class ZombieFollow : MonoBehaviour
 {
     [SerializeField] private float followSpeed = 6f;
@@ -23,6 +24,9 @@ public class ZombieFollow : MonoBehaviour
     private bool isDying;
     private bool deathCounted;
     private bool holdingSlot;
+    // True once this zombie has reached the person and the hold timer has started.
+    private bool attackHolding;
+    // This zombie's own spot in the horde, relative to the player.
     private Vector2 slotOffset;
     private ZombieHealth health;
     private Rigidbody2D body;
@@ -34,6 +38,7 @@ public class ZombieFollow : MonoBehaviour
 
     public bool IsFollowing => isFollowing;
 
+    // Called by the civilian when the bite lands.
     public void StartFollowing(Transform playerTransform)
     {
         leader = playerTransform;
@@ -54,6 +59,8 @@ public class ZombieFollow : MonoBehaviour
         if (horde != null)
         {
             horde.Register(this);
+
+            // Take a free random spot so followers do not stack.
             slotOffset = horde.AssignSlot();
             holdingSlot = true;
         }
@@ -74,6 +81,7 @@ public class ZombieFollow : MonoBehaviour
             return;
         }
 
+        // Shield time is up, so this zombie leaves.
         if (shielding)
         {
             shieldTimer -= Time.deltaTime;
@@ -83,8 +91,18 @@ public class ZombieFollow : MonoBehaviour
 
         if (attacking)
         {
+            // The target is gone.
+            if (attackTarget == null)
+            {
+                gameObject.SetActive(false);
+                return;
+            }
+
+            // Still chasing. The 5 seconds start after the grab.
+            if (!attackHolding) return;
+
             attackTimer -= Time.deltaTime;
-            if (attackTimer <= 0f || attackTarget == null) gameObject.SetActive(false);
+            if (attackTimer <= 0f) gameObject.SetActive(false);
         }
     }
 
@@ -92,6 +110,7 @@ public class ZombieFollow : MonoBehaviour
     {
         if (isDying || body == null) return;
 
+        // Walk around the player for the shield.
         if (shielding && leader != null)
         {
             angle += orbitSpeed * Time.fixedDeltaTime;
@@ -103,20 +122,38 @@ public class ZombieFollow : MonoBehaviour
 
         if (attacking && attackTarget != null)
         {
+            // Close enough to count as a grab.
+            if (!attackHolding && Vector2.Distance(body.position, attackTarget.position) <= 1.2f)
+            {
+                attackHolding = true;
+            }
+
+
+            if (attackHolding)
+            {
+                // Stay on them and keep the pin refreshed.
+                body.linearVelocity = Vector2.zero;
+                body.MovePosition(attackTarget.position);
+                Pinned pinned = attackTarget.GetComponent<Pinned>();
+                if (pinned == null)
+                {
+                    pinned = attackTarget.gameObject.AddComponent<Pinned>();
+                }
+                   
+                pinned.Hold();
+                return;
+            }
+
+            // Not there yet. Keep running at the target.
             Vector2 displacement = (Vector2)attackTarget.position - body.position;
             float step = Mathf.Min(displacement.magnitude, attackSpeed * Time.fixedDeltaTime);
-            Vector2 destination = MoveInDirection(displacement, step);
-            if (Vector2.Distance(destination, attackTarget.position) <= 1.2f)
-            {
-                Pinned pinned = attackTarget.GetComponent<Pinned>();
-                if (pinned == null) pinned = attackTarget.gameObject.AddComponent<Pinned>();
-                pinned.Hold();
-            }
+            MoveInDirection(displacement, step);
             return;
         }
 
         if (!isFollowing || leader == null) return;
 
+        // Walk to this zombie's own spot beside the player.
         Vector2 current = body.position;
         Vector2 goal = GetLeaderPosition() + slotOffset;
         Vector2 delta = goal - current;
@@ -129,6 +166,7 @@ public class ZombieFollow : MonoBehaviour
         MoveInDirection(delta, followSpeed * Time.fixedDeltaTime);
     }
 
+    // Moves toward a direction, but stops short of a wall.
     private Vector2 MoveInDirection(Vector2 desiredDisplacement, float maxDistance)
     {
         if (desiredDisplacement.sqrMagnitude <= 0.0001f || maxDistance <= 0f)
@@ -150,6 +188,7 @@ public class ZombieFollow : MonoBehaviour
         return destination;
     }
 
+    // If a wall is ahead, slide along it instead of walking into it.
     private Vector2 GetObstacleAwareDirection(Vector2 current, Vector2 desiredDirection)
     {
         float lookAhead = Mathf.Max(obstacleLookAhead, followSpeed * Time.fixedDeltaTime);
@@ -195,6 +234,7 @@ public class ZombieFollow : MonoBehaviour
         return obstacleTravelDirection;
     }
 
+    // How far this zombie can move before hitting something.
     private float GetClearance(Vector2 origin, Vector2 direction, float distance)
     {
         return TryGetObstacle(origin, direction, distance, out RaycastHit2D hit)
@@ -202,6 +242,7 @@ public class ZombieFollow : MonoBehaviour
             : distance;
     }
 
+    // Looks ahead for the nearest real wall.
     private bool TryGetObstacle(Vector2 origin, Vector2 direction, float distance, out RaycastHit2D closestHit)
     {
         closestHit = default;
@@ -229,6 +270,7 @@ public class ZombieFollow : MonoBehaviour
         return found;
     }
 
+    // Walls count. The player, other followers, and the chase target do not.
     private bool IsObstacle(Collider2D hitCollider)
     {
         if (hitCollider == null || hitCollider.isTrigger || hitCollider.attachedRigidbody == body)
@@ -277,6 +319,8 @@ public class ZombieFollow : MonoBehaviour
             body.linearVelocity = Vector2.zero;
             body.angularVelocity = 0f;
         }
+
+        // Only drop the horde count once.
         if (!deathCounted && Tracker.Instance != null)
         {
             Tracker.Instance.RemoveZombie();
@@ -292,6 +336,7 @@ public class ZombieFollow : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    // Spent on an ability. They leave the free horde, but stay in the scene.
     public void MarkSpent()
     {
         ReleaseMySlot();
@@ -299,6 +344,7 @@ public class ZombieFollow : MonoBehaviour
         animationDriver?.SetMovementDirection(Vector2.zero);
     }
 
+    // Give the horde spot back so another zombie can use it.
     private void ReleaseMySlot()
     {
         if (!holdingSlot || leader == null) return;
@@ -315,6 +361,7 @@ public class ZombieFollow : MonoBehaviour
         if (animationDriver == null) animationDriver = GetComponent<ZombiePlayerAnimation>();
     }
 
+    // Shield ability. Circle the player until the timer ends.
     public void StartShield(float duration, float radius, float speed, float startAngle)
     {
         shielding = true;
@@ -324,10 +371,12 @@ public class ZombieFollow : MonoBehaviour
         angle = startAngle;
     }
 
+    // Attack ability. Chase first, then hold the target.
     public void StartAttack(Transform target, float duration, float speed)
     {
         attackTarget = target;
         attacking = true;
+        attackHolding = false;
         attackTimer = duration;
         attackSpeed = speed;
     }
