@@ -1,0 +1,276 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4137033617336024646
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 13886831113222539}
+  - component: {fileID: 2811180026972868735}
+  - component: {fileID: 1292568559739273365}
+  - component: {fileID: 445143090340132890}
+  - component: {fileID: 3284150856911226178}
+  - component: {fileID: 3677117498735472944}
+  - component: {fileID: 3822783676784870774}
+  - component: {fileID: 978085169390908020}
+  m_Layer: 0
+  m_Name: Civilian
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &13886831113222539
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4137033617336024646}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &2811180026972868735
+SpriteRenderer:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4137033617336024646}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_MaskInteraction: 0
+  m_Sprite: {fileID: 21300000, guid: 6396c4ba574884a30a240729803d3903, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 2.25, y: 3.31}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_SpriteSortPoint: 0
+  m_BlendShapeWeights: []
+--- !u!61 &1292568559739273365
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4137033617336024646}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0.32}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.25, y: 3.31}
+    newSize: {x: 2.25, y: 3.31}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.7, y: 0.65}
+  m_EdgeRadius: 0
+--- !u!114 &445143090340132890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4137033617336024646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 875244037f2de0c45ba48a9d66e2d718, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Civilian
+  food: 25
+  heal: 20
+  zombieSprite: {fileID: 21300000, guid: c5e01ff6c27c84768a2ca7e24e5e6af3, type: 3}
+  zombieHealth: 50
+--- !u!114 &3284150856911226178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4137033617336024646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a60235056aec7af47964d8aa6e3688e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZombieFollow
+  followSpeed: 6
+  stopDistance: 1.5
+  testDamage: 25
+  attackInterval: 1.25
+--- !u!50 &3677117498735472944
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4137033617336024646}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 1
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
+--- !u!114 &3822783676784870774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4137033617336024646}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e8f761d4dd047848935a6e537bfa116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZombiePlayerAnimation
+  idleSheets:
+  - {fileID: 2800000, guid: 9a6e73264c9018145a0a210ae3c2ac25, type: 3}
+  - {fileID: 2800000, guid: e7b95a0cca6c6e14a9c3d3eedc891d29, type: 3}
+  - {fileID: 2800000, guid: 00507f083efc427418e98bd11a3dac1c, type: 3}
+  - {fileID: 2800000, guid: fdb6e5c9c425d4c4a91e4757b050786f, type: 3}
+  walkSheets:
+  - {fileID: 2800000, guid: 14d41740c56de3745941bbe96567e119, type: 3}
+  - {fileID: 2800000, guid: 481122a6f36e4914fbc994acbbdcbf14, type: 3}
+  - {fileID: 2800000, guid: 75c449ac1e46b2a4eac5d1dd202733be, type: 3}
+  - {fileID: 2800000, guid: 0dd83cdc6c992d9499cf1741c2df6461, type: 3}
+  firstAttackSheets:
+  - {fileID: 2800000, guid: ba709f5689d43154ba9509a872ec9ffa, type: 3}
+  - {fileID: 2800000, guid: 38d930ba2bd111644814d0ba7baa3481, type: 3}
+  - {fileID: 2800000, guid: 2a7028069c9fab244b747e562ffef644, type: 3}
+  - {fileID: 2800000, guid: 28ee39b684c3dbb4db089a5fb558e4d2, type: 3}
+  secondAttackSheets:
+  - {fileID: 2800000, guid: 530a9271253c18a45bba6fb7896e4bc5, type: 3}
+  - {fileID: 2800000, guid: 0636c36b6d889644b85572fd60e4fb39, type: 3}
+  - {fileID: 2800000, guid: f69a21d50f4c98043bc7d309124fb042, type: 3}
+  - {fileID: 2800000, guid: 7190e4ed17e4c904d92b221b67647257, type: 3}
+  firstDeathSheets:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 2800000, guid: 3953d504db3483643afe442dbfbd83d8, type: 3}
+  - {fileID: 2800000, guid: c09ab76d24f34fa4ab989bd790ee61a8, type: 3}
+  secondDeathSheets:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 2800000, guid: 0b0fb124875afc240886362c93e0e20e, type: 3}
+  - {fileID: 2800000, guid: f2590f244fd5b7c458b4ab1ace6f013c, type: 3}
+  idleFrameCount: 6
+  walkFrameCount: 6
+  firstAttackFrameCount: 4
+  secondAttackFrameCount: 11
+  firstDeathFrameCount: 6
+  secondDeathFrameCount: 7
+  pixelsPerUnit: 16
+  idleFramesPerSecond: 6
+  walkFramesPerSecond: 10
+  attackFramesPerSecond: 12
+  deathFramesPerSecond: 10
+  movementThreshold: 0.05
+  listenForAttackInput: 0
+  useSecondAttack: 0
+--- !u!114 &978085169390908020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4137033617336024646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ee77da71c295d54b8b093499f5f74e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CivilianMovement
+  noticeRange: 6
+  fleeSpeed: 3.5
+  wanderSpeed: 1.5
