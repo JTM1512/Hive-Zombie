@@ -30,18 +30,17 @@ public class ZombieBite : MonoBehaviour
         foreach (Collider2D hit in hits)
         {
             Civilian civilian = hit.GetComponent<Civilian>(); // Check if the collider has a Civilian component
-            if (civilian == null)
+            if (civilian == null || civilian.HasTurned)
             {
                 continue; // Skip if the collider is a civilian
             }
-            bool wasTurned = civilian.HasTurned;
+            
             civilian.getBitten(hunger); // Call the getBitten method on the civilian, passing the zombie's hunger
-            if (!wasTurned && civilian.HasTurned)
-            {
-                ZombiePlayerAnimation animationDriver = GetComponent<ZombiePlayerAnimation>();
-                if (animationDriver != null)
-                    animationDriver.PlayAttack();
-            }
+
+            ZombiePlayerAnimation animationDriver = GetComponent<ZombiePlayerAnimation>();
+            if (animationDriver != null)
+                animationDriver.PlayAttack();
+
             break;
         }
     }
