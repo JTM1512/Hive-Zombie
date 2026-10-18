@@ -14,7 +14,7 @@ public class Bullet : MonoBehaviour
     float speed;
     float remaining;
 
-    public static void Spawn(EnemyUnit shooter, Transform player, Vector2 origin, Vector2 direction, float range, float speed, float damage)
+    public static void Spawn(EnemyUnit shooter, Transform player, Vector2 origin, Vector2 direction, float range, float speed, float damage, Sprite projectileSprite = null)
     {
         if (direction.sqrMagnitude < 0.0001f || range <= 0f) return;
 
@@ -22,11 +22,13 @@ public class Bullet : MonoBehaviour
         bulletObject.transform.position = origin;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         bulletObject.transform.rotation = Quaternion.Euler(0f, 0f, angle);
-        bulletObject.transform.localScale = new Vector3(0.45f, 0.12f, 1f);
+        bulletObject.transform.localScale = projectileSprite != null
+            ? Vector3.one * 2f
+            : new Vector3(0.45f, 0.12f, 1f);
 
         SpriteRenderer renderer = bulletObject.AddComponent<SpriteRenderer>();
-        renderer.sprite = Streak();
-        renderer.color = new Color(1f, 0.85f, 0.2f);
+        renderer.sprite = projectileSprite != null ? projectileSprite : Streak();
+        renderer.color = projectileSprite != null ? Color.white : new Color(1f, 0.85f, 0.2f);
         renderer.sortingLayerName = sortingLayer;
         renderer.sortingOrder = short.MaxValue;
 

@@ -13,14 +13,28 @@ public class EnemyUnit : MonoBehaviour
     [SerializeField] float food = 25f;
     [SerializeField] float heal = 20f;
     [SerializeField] float zombieHealth = 50f;
-    [SerializeField] float bulletSpeed = 18f;
+    [SerializeField] Sprite[] meleeIdleFrames;
+    [SerializeField] Sprite[] meleeWalkFrames;
+    [SerializeField, Min(0.01f)] float meleeIdleFrameDuration = 0.25f;
+    [SerializeField, Min(0.01f)] float meleeWalkFrameDuration = 0.12f;
+    [SerializeField] Sprite[] rangeRunFrames;
+    [SerializeField] Sprite[] rangeFireFrames;
+    [SerializeField] Sprite[] robotRunFrames;
+    [SerializeField] Sprite[] robotFireFrames;
+    [SerializeField] Sprite bulletSprite;
+    [SerializeField, Min(0.01f)] float rangedFrameDuration = 0.12f;
+    [SerializeField, Min(0.1f)] float bulletTravelSpeed = 14f;
     [SerializeField] float blastRadius = 2f;
     [SerializeField] float grenadeFuse = 1f;
 
     float attackTimer;
+    float animationTimer;
+    int animationFrame;
+    bool wasMoving;
     bool turned;
     Enemies owner;
     Transform target;
+    SpriteRenderer spriteRenderer;
     EnemyLook look = EnemyLook.Placeholder;
 
     enum EnemyLook { Placeholder, Baton, Range, Robot }
@@ -45,6 +59,17 @@ public class EnemyUnit : MonoBehaviour
         range = tier.range;
         cooldown = tier.cooldown;
         attackTimer = 0f;
+
+        string tierName = tier.tierName ?? string.Empty;
+        if (tierName.IndexOf("Stronger cops", System.StringComparison.OrdinalIgnoreCase) >= 0)
+            look = EnemyLook.Range;
+        else if (tierName.IndexOf("military", System.StringComparison.OrdinalIgnoreCase) >= 0)
+            look = EnemyLook.Robot;
+        else if (attackType == AttackType.Baton)
+            look = EnemyLook.Baton;
+
+        if ((look == EnemyLook.Range || look == EnemyLook.Robot) && spriteRenderer != null)
+            spriteRenderer.color = Color.white;
     }
 
     void ApplyCharacterSorting()
@@ -227,7 +252,7 @@ public class EnemyUnit : MonoBehaviour
         const float muzzle = 0.6f;
         Vector2 origin = (Vector2)transform.position + direction * muzzle;
         float travel = Mathf.Max(0.1f, range - muzzle);
-        Bullet.Spawn(this, target, origin, direction, travel, bulletSpeed, damage);
+        Bullet.Spawn(this, target, origin, direction, travel, bulletTravelSpeed, damage, bulletSprite);
     }
 
     void FireBurst()
