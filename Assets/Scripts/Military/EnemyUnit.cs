@@ -9,8 +9,16 @@ public class EnemyUnit : MonoBehaviour
     [SerializeField] AttackType attackType;
     [SerializeField] float range;
     [SerializeField] float cooldown;
+    [SerializeField] Sprite[] meleeIdleFrames;
+    [SerializeField] Sprite[] meleeWalkFrames;
+    [SerializeField, Min(0.01f)] float meleeIdleFrameDuration = 0.25f;
+    [SerializeField, Min(0.01f)] float meleeWalkFrameDuration = 0.12f;
 
     float attackTimer;
+    float animationTimer;
+    int animationFrame;
+    bool wasMoving;
+    SpriteRenderer spriteRenderer;
     float fuse;
     Vector2 blastPoint;
     bool grenadeLive;
@@ -19,6 +27,7 @@ public class EnemyUnit : MonoBehaviour
 
     void Awake()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         ApplyCharacterSorting();
     }
 
@@ -65,7 +74,15 @@ public class EnemyUnit : MonoBehaviour
         }
 
         float distance = Vector2.Distance(transform.position, target.position);
-        if (distance > range)
+        bool moving = distance > range;
+        if (attackType == AttackType.Baton)
+        {
+            if (spriteRenderer != null)
+                spriteRenderer.flipX = target.position.x < transform.position.x;
+            UpdateMeleeAnimation(moving);
+        }
+
+        if (moving)
         {
             transform.position = Vector2.MoveTowards(
                 transform.position, target.position, speed * Time.deltaTime);
@@ -77,6 +94,30 @@ public class EnemyUnit : MonoBehaviour
 
         attackTimer = cooldown;
         Attack();
+    }
+
+    void UpdateMeleeAnimation(bool moving)
+    {
+        if (spriteRenderer == null) return;
+
+        Sprite[] frames = moving ? meleeWalkFrames : meleeIdleFrames;
+        if (frames == null || frames.Length == 0) return;
+
+        if (moving != wasMoving)
+        {
+            wasMoving = moving;
+            animationFrame = 0;
+            animationTimer = 0f;
+        }
+
+        animationTimer += Time.deltaTime;
+        float frameDuration = moving ? meleeWalkFrameDuration : meleeIdleFrameDuration;
+        while (animationTimer >= frameDuration)
+        {
+            animationTimer -= frameDuration;
+            animationFrame = (animationFrame + 1) % frames.Length;
+        }
+        spriteRenderer.sprite = frames[animationFrame];
     }
 
     void Attack()

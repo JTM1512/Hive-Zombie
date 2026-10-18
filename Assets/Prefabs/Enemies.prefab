@@ -106,6 +106,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20b31d0c0c501384bbbb56ef3b215baf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyUnit
+  meleeIdleFrames:
+  - {fileID: -8643926368874118046, guid: c2389c324adfbe143918f37ab33e7e30, type: 3}
+  - {fileID: 3028289270761859127, guid: c2389c324adfbe143918f37ab33e7e30, type: 3}
+  - {fileID: 299220345718916753, guid: c2389c324adfbe143918f37ab33e7e30, type: 3}
+  - {fileID: -1752075435593645878, guid: c2389c324adfbe143918f37ab33e7e30, type: 3}
+  meleeWalkFrames:
+  - {fileID: 6333563029474022679, guid: 2aab35802d68b7c41882f8d78900c673, type: 3}
+  - {fileID: 4817294972253163197, guid: 2aab35802d68b7c41882f8d78900c673, type: 3}
+  - {fileID: -565813405319908220, guid: 2aab35802d68b7c41882f8d78900c673, type: 3}
+  - {fileID: -4247766982146448780, guid: 2aab35802d68b7c41882f8d78900c673, type: 3}
+  - {fileID: 7818807929766994065, guid: 2aab35802d68b7c41882f8d78900c673, type: 3}
+  - {fileID: -5967965220527183282, guid: 2aab35802d68b7c41882f8d78900c673, type: 3}
+  - {fileID: 2300633732816504689, guid: 2aab35802d68b7c41882f8d78900c673, type: 3}
+  - {fileID: 1082584666963037526, guid: 2aab35802d68b7c41882f8d78900c673, type: 3}
+  meleeIdleFrameDuration: 0.25
+  meleeWalkFrameDuration: 0.12
 --- !u!61 &8123456789012345678
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -12,22 +12,26 @@ public class ZombieHealth : MonoBehaviour
     public float maxHealthValue => maxHealth;
     void Awake()
     {
+        maxHealth = Mathf.Max(1f, maxHealth);
         health = maxHealth;
+        RefreshHealthBar();
     }
 
-    // Update is called once per frame
-    void Update()
+    void RefreshHealthBar()
     {
-        // Make percentage for Slider. This is a value between 0 and 1.
-        if (healthBar != null) 
+        if (healthBar != null)
         {
-            healthBar.value = health / maxHealth;
+            healthBar.minValue = 0f;
+            healthBar.maxValue = maxHealth;
+            healthBar.wholeNumbers = false;
+            healthBar.value = health;
         }
     }
 
     public void Heal(float amount)
     {
-        health = Mathf.Min(maxHealth, health + amount);
+        health = Mathf.Clamp(health + amount, 0f, maxHealth);
+        RefreshHealthBar();
     }
 
     public void TakeDamage(float amount)
@@ -35,6 +39,7 @@ public class ZombieHealth : MonoBehaviour
         if (health <= 0f) return;
 
         health = Mathf.Max(0f, health - amount);
+        RefreshHealthBar();
         if (health > 0f) return;
 
         // The player has no follower script. This is their death.
@@ -54,9 +59,9 @@ public class ZombieHealth : MonoBehaviour
 
     public void SetHealth(float amount)
     {
-        // This method sets both the current health and the maximum health to the specified amount.
-        maxHealth = amount;
-        health = amount;
+        maxHealth = Mathf.Max(1f, amount);
+        health = maxHealth;
+        RefreshHealthBar();
     }
 
 
