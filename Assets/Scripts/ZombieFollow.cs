@@ -85,7 +85,7 @@ public class ZombieFollow : MonoBehaviour
         if (shielding)
         {
             shieldTimer -= Time.deltaTime;
-            if (shieldTimer <= 0f) gameObject.SetActive(false);
+            if (shieldTimer <= 0f) BeginDeath();
             return;
         }
 
@@ -94,7 +94,7 @@ public class ZombieFollow : MonoBehaviour
             // The target is gone.
             if (attackTarget == null)
             {
-                gameObject.SetActive(false);
+                BeginDeath();
                 return;
             }
 
@@ -102,7 +102,7 @@ public class ZombieFollow : MonoBehaviour
             if (!attackHolding) return;
 
             attackTimer -= Time.deltaTime;
-            if (attackTimer <= 0f) gameObject.SetActive(false);
+            if (attackTimer <= 0f) BeginDeath();
         }
     }
 
@@ -341,7 +341,14 @@ public class ZombieFollow : MonoBehaviour
     {
         ReleaseMySlot();
         isFollowing = false;
+        // Horde.TrySpend already removed this follower from the tracker.
+        deathCounted = true;
         animationDriver?.SetMovementDirection(Vector2.zero);
+    }
+
+    public void DespawnWithDeathAnimation()
+    {
+        BeginDeath();
     }
 
     // Give the horde spot back so another zombie can use it.

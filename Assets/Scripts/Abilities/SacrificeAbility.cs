@@ -41,7 +41,7 @@ public class SacrificeAbility : MonoBehaviour, IAbilityInfo
                 hunger.Eat(foodValue, healValue);
             }
 
-            zombie.gameObject.SetActive(false);
+            zombie.DespawnWithDeathAnimation();
         }
     }
 }
