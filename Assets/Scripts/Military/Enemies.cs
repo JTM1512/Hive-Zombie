@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
@@ -8,7 +9,7 @@ public class Enemies : MonoBehaviour
     [SerializeField] int maxAlive = 6;
     [SerializeField] Transform[] spawnPoints;
 
-    Tiers currentTier;
+    readonly List<Tiers> unlocked = new List<Tiers>();
     float spawnTimer;
     int alive;
     bool listening;
@@ -17,7 +18,7 @@ public class Enemies : MonoBehaviour
     {
         Listen();
         if (Tracker.Instance == null) return;
-        currentTier = PickTier(Tracker.Instance.Count);
+        RefreshUnlocked(Tracker.Instance.Count);
     }
 
     void OnEnable()
@@ -38,44 +39,49 @@ public class Enemies : MonoBehaviour
         Tracker.Instance.CountChanged += OnHordeCountChanged;
         listening = true;
     }
+
     void OnHordeCountChanged(int newCount)
     {
-        currentTier = PickTier(newCount);
+        RefreshUnlocked(newCount);
     }
-    // Update is called once per frame
+
     void Update()
     {
-        if (currentTier == null || currentTier.zombiePrefab == null) return;
-        if(alive >= maxAlive) return;
+        if (unlocked.Count == 0) return;
+        if (alive >= maxAlive) return;
         spawnTimer += Time.deltaTime;
-        if(spawnTimer < spawnInterval) return;
+        if (spawnTimer < spawnInterval) return;
         spawnTimer = 0f;
         SpawnZombie();
     }
-    Tiers PickTier(int zombieCount)
+
+    void RefreshUnlocked(int zombieCount)
     {
-        Tiers best = Tiers[0];
-        foreach(Tiers tier in Tiers)
+        unlocked.Clear();
+        if (Tiers == null) return;
+
+        foreach (Tiers tier in Tiers)
         {
-         if(zombieCount >= tier.minZombies && tier.minZombies > best.minZombies)
-         {
-            best = tier;
-         }
+            if (tier == null || tier.zombiePrefab == null) continue;
+            if (zombieCount >= tier.minZombies)
+                unlocked.Add(tier);
         }
-        return best;
     }
+
     void SpawnZombie()
     {
+        if (unlocked.Count == 0 || spawnPoints == null || spawnPoints.Length == 0) return;
+
+        Tiers tier = unlocked[Random.Range(0, unlocked.Count)];
         Transform point = spawnPoints[Random.Range(0, spawnPoints.Length)];
-        GameObject zombie = Instantiate(currentTier.zombiePrefab, point.position, Quaternion.identity);
+        GameObject zombie = Instantiate(tier.zombiePrefab, point.position, Quaternion.identity);
 
         EnemyUnit enemySprite = zombie.GetComponent<EnemyUnit>();
-        if(enemySprite != null)
-        {
-            enemySprite.Setup(currentTier,this);
-        }
+        if (enemySprite != null)
+            enemySprite.Setup(tier, this);
         alive++;
     }
+
     public void NotifyDeath()
     {
         alive = Mathf.Max(0, alive - 1);

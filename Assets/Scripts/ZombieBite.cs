@@ -25,30 +25,65 @@ public class ZombieBite : MonoBehaviour
 
     void Bite()
     {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, biteRange); // Get all colliders within the bite range
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, biteRange);
+        Collider2D closest = null;
+        float closestDistance = float.MaxValue;
 
         foreach (Collider2D hit in hits)
         {
-            Civilian civilian = hit.GetComponent<Civilian>(); // Check if the collider has a Civilian component
+            if (!CanBite(hit)) continue;
 
-            // Check if marked civilian is an already turned zombie
-            if (civilian == null || civilian.HasTurned)
-            {
-                continue; // Skip if the collider is a civilian
-            }
-            
-            civilian.getBitten(hunger); // Call the getBitten method on the civilian, passing the zombie's hunger
+            float distance = Vector2.Distance(transform.position, hit.transform.position);
+            if (distance >= closestDistance) continue;
 
-            // Trigger the player's bite animation only when the bite actually turns a civilian.
-            if (civilian.HasTurned)
-            {
-                ZombiePlayerAnimation animationDriver = GetComponent<ZombiePlayerAnimation>();
-                if (animationDriver != null)
-                    animationDriver.PlayAttack();
-            }
-
-            break;
+            closestDistance = distance;
+            closest = hit;
         }
+
+        if (closest == null) return;
+        if (TryBiteCivilian(closest)) return;
+        TryBiteEnemy(closest);
+    }
+
+    bool CanBite(Collider2D hit)
+    {
+        Civilian civilian = hit.GetComponent<Civilian>();
+        if (civilian != null && !civilian.HasTurned)
+            return true;
+
+        EnemyUnit enemy = hit.GetComponent<EnemyUnit>();
+        return enemy != null && !enemy.HasTurned;
+    }
+
+    bool TryBiteCivilian(Collider2D hit)
+    {
+        Civilian civilian = hit.GetComponent<Civilian>();
+        if (civilian == null || civilian.HasTurned)
+            return false;
+
+        civilian.getBitten(hunger);
+        if (civilian.HasTurned)
+            PlayBite();
+        return true;
+    }
+
+    bool TryBiteEnemy(Collider2D hit)
+    {
+        EnemyUnit enemy = hit.GetComponent<EnemyUnit>();
+        if (enemy == null || enemy.HasTurned)
+            return false;
+
+        enemy.getBitten(hunger);
+        if (enemy.HasTurned)
+            PlayBite();
+        return true;
+    }
+
+    void PlayBite()
+    {
+        ZombiePlayerAnimation animationDriver = GetComponent<ZombiePlayerAnimation>();
+        if (animationDriver != null)
+            animationDriver.PlayAttack();
     }
 
 }

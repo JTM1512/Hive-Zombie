@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 6605696938004575417}
   - component: {fileID: 4855921537839679947}
   - component: {fileID: 8123456789012345678}
+  - component: {fileID: 7123456789012345601}
+  - component: {fileID: 7123456789012345603}
   m_Layer: 0
   m_Name: Enemies
   m_TagString: Untagged
@@ -152,3 +154,87 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &7123456789012345601
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3650185472326457537}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 1
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
+--- !u!114 &7123456789012345603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3650185472326457537}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e8f761d4dd047848935a6e537bfa116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZombiePlayerAnimation
+  idleSheets:
+  - {fileID: 2800000, guid: 9a6e73264c9018145a0a210ae3c2ac25, type: 3}
+  - {fileID: 2800000, guid: e7b95a0cca6c6e14a9c3d3eedc891d29, type: 3}
+  - {fileID: 2800000, guid: 00507f083efc427418e98bd11a3dac1c, type: 3}
+  - {fileID: 2800000, guid: fdb6e5c9c425d4c4a91e4757b050786f, type: 3}
+  walkSheets:
+  - {fileID: 2800000, guid: 14d41740c56de3745941bbe96567e119, type: 3}
+  - {fileID: 2800000, guid: 481122a6f36e4914fbc994acbbdcbf14, type: 3}
+  - {fileID: 2800000, guid: 75c449ac1e46b2a4eac5d1dd202733be, type: 3}
+  - {fileID: 2800000, guid: 0dd83cdc6c992d9499cf1741c2df6461, type: 3}
+  firstAttackSheets:
+  - {fileID: 2800000, guid: ba709f5689d43154ba9509a872ec9ffa, type: 3}
+  - {fileID: 2800000, guid: 38d930ba2bd111644814d0ba7baa3481, type: 3}
+  - {fileID: 2800000, guid: 2a7028069c9fab244b747e562ffef644, type: 3}
+  - {fileID: 2800000, guid: 28ee39b684c3dbb4db089a5fb558e4d2, type: 3}
+  secondAttackSheets:
+  - {fileID: 2800000, guid: 530a9271253c18a45bba6fb7896e4bc5, type: 3}
+  - {fileID: 2800000, guid: 0636c36b6d889644b85572fd60e4fb39, type: 3}
+  - {fileID: 2800000, guid: f69a21d50f4c98043bc7d309124fb042, type: 3}
+  - {fileID: 2800000, guid: 7190e4ed17e4c904d92b221b67647257, type: 3}
+  firstDeathSheets:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 2800000, guid: 3953d504db3483643afe442dbfbd83d8, type: 3}
+  - {fileID: 2800000, guid: c09ab76d24f34fa4ab989bd790ee61a8, type: 3}
+  secondDeathSheets:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 2800000, guid: 0b0fb124875afc240886362c93e0e20e, type: 3}
+  - {fileID: 2800000, guid: f2590f244fd5b7c458b4ab1ace6f013c, type: 3}
+  idleFrameCount: 6
+  walkFrameCount: 6
+  firstAttackFrameCount: 4
+  secondAttackFrameCount: 11
+  firstDeathFrameCount: 6
+  secondDeathFrameCount: 7
+  pixelsPerUnit: 16
+  idleFramesPerSecond: 6
+  walkFramesPerSecond: 10
+  attackFramesPerSecond: 12
+  deathFramesPerSecond: 10
+  movementThreshold: 0.05
+  listenForAttackInput: 0
+  useSecondAttack: 0
+  characterSortingLayer: Default
