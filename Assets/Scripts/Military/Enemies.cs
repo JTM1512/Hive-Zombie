@@ -6,11 +6,14 @@ public class Enemies : MonoBehaviour
 {
     [SerializeField] Tiers[] Tiers;
     [SerializeField] float spawnInterval = 8f;
+    [SerializeField, Min(0.1f)] float minimumSpawnInterval = 2f;
+    [SerializeField, Min(0f)] float spawnIntervalDecreasePerMinute = 0.5f;
     [SerializeField] int maxAlive = 6;
     [SerializeField] Transform[] spawnPoints;
 
     readonly List<Tiers> unlocked = new List<Tiers>();
     float spawnTimer;
+    float elapsedGameTime;
     int alive;
     bool listening;
 
@@ -47,10 +50,14 @@ public class Enemies : MonoBehaviour
 
     void Update()
     {
+        elapsedGameTime += Time.deltaTime;
         if (unlocked.Count == 0) return;
         if (alive >= maxAlive) return;
         spawnTimer += Time.deltaTime;
-        if (spawnTimer < spawnInterval) return;
+        float currentSpawnInterval = Mathf.Max(
+            minimumSpawnInterval,
+            spawnInterval - elapsedGameTime * spawnIntervalDecreasePerMinute / 60f);
+        if (spawnTimer < currentSpawnInterval) return;
         spawnTimer = 0f;
         SpawnZombie();
     }

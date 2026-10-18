@@ -52,7 +52,7 @@ public class EnemyUnit : MonoBehaviour
         ApplyCharacterSorting();
         owner = spawner;
         health = tier.health;
-        damage = tier.damage;
+        damage = tier.damage * (tier.attackType == AttackType.Baton ? 5f : 1f);
         speed = tier.speed;
         target = Tracker.Instance.transform;
         attackType = tier.attackType;
