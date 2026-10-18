@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyUnit : MonoBehaviour
@@ -13,6 +14,13 @@ public class EnemyUnit : MonoBehaviour
     [SerializeField] Sprite[] meleeWalkFrames;
     [SerializeField, Min(0.01f)] float meleeIdleFrameDuration = 0.25f;
     [SerializeField, Min(0.01f)] float meleeWalkFrameDuration = 0.12f;
+    [SerializeField] Sprite[] rangeRunFrames;
+    [SerializeField] Sprite[] rangeFireFrames;
+    [SerializeField] Sprite[] robotRunFrames;
+    [SerializeField] Sprite[] robotFireFrames;
+    [SerializeField] Sprite bulletSprite;
+    [SerializeField, Min(0.1f)] float rangedFrameDuration = 0.12f;
+    [SerializeField, Min(0.1f)] float bulletTravelSpeed = 14f;
 
     float attackTimer;
     float animationTimer;
@@ -24,6 +32,9 @@ public class EnemyUnit : MonoBehaviour
     bool grenadeLive;
     Enemies owner;
     Transform target;
+    EnemyLook look = EnemyLook.Placeholder;
+
+    enum EnemyLook { Placeholder, Baton, Range, Robot }
 
     void Awake()
     {
@@ -43,6 +54,15 @@ public class EnemyUnit : MonoBehaviour
         range = tier.range;
         cooldown = tier.cooldown;
         attackTimer = cooldown;
+        if (tier.tierName != null && tier.tierName.IndexOf("Stronger cops", System.StringComparison.OrdinalIgnoreCase) >= 0)
+            look = EnemyLook.Range;
+        else if (tier.tierName != null && tier.tierName.IndexOf("military", System.StringComparison.OrdinalIgnoreCase) >= 0)
+            look = EnemyLook.Robot;
+        else if (attackType == AttackType.Baton)
+            look = EnemyLook.Baton;
+
+        if ((look == EnemyLook.Range || look == EnemyLook.Robot) && spriteRenderer != null)
+            spriteRenderer.color = Color.white;
     }
 
     void ApplyCharacterSorting()
@@ -75,11 +95,11 @@ public class EnemyUnit : MonoBehaviour
 
         float distance = Vector2.Distance(transform.position, target.position);
         bool moving = distance > range;
-        if (attackType == AttackType.Baton)
+        if (look != EnemyLook.Placeholder)
         {
             if (spriteRenderer != null)
                 spriteRenderer.flipX = target.position.x < transform.position.x;
-            UpdateMeleeAnimation(moving);
+            UpdateLookAnimation(moving);
         }
 
         if (moving)
@@ -96,11 +116,29 @@ public class EnemyUnit : MonoBehaviour
         Attack();
     }
 
-    void UpdateMeleeAnimation(bool moving)
+    void UpdateLookAnimation(bool moving)
     {
         if (spriteRenderer == null) return;
 
-        Sprite[] frames = moving ? meleeWalkFrames : meleeIdleFrames;
+        Sprite[] frames;
+        float frameDuration;
+        switch (look)
+        {
+            case EnemyLook.Baton:
+                frames = moving ? meleeWalkFrames : meleeIdleFrames;
+                frameDuration = moving ? meleeWalkFrameDuration : meleeIdleFrameDuration;
+                break;
+            case EnemyLook.Range:
+                frames = moving ? rangeRunFrames : rangeFireFrames;
+                frameDuration = rangedFrameDuration;
+                break;
+            case EnemyLook.Robot:
+                frames = moving ? robotRunFrames : robotFireFrames;
+                frameDuration = rangedFrameDuration;
+                break;
+            default:
+                return;
+        }
         if (frames == null || frames.Length == 0) return;
 
         if (moving != wasMoving)
@@ -111,7 +149,6 @@ public class EnemyUnit : MonoBehaviour
         }
 
         animationTimer += Time.deltaTime;
-        float frameDuration = moving ? meleeWalkFrameDuration : meleeIdleFrameDuration;
         while (animationTimer >= frameDuration)
         {
             animationTimer -= frameDuration;
@@ -171,6 +208,7 @@ public class EnemyUnit : MonoBehaviour
     void HitRay(bool pierce)
     {
         Vector2 direction = ((Vector2)target.position - (Vector2)transform.position).normalized;
+        SpawnBullet(direction);
         RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, direction, range);
 
         foreach (RaycastHit2D hit in hits)
@@ -190,6 +228,7 @@ public class EnemyUnit : MonoBehaviour
         foreach (float angle in angles)
         {
             Vector2 shot = Quaternion.Euler(0f, 0f, angle) * (Vector3)direction;
+            SpawnBullet(shot);
             RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, shot, range);
 
             foreach (RaycastHit2D hit in hits)
@@ -198,6 +237,33 @@ public class EnemyUnit : MonoBehaviour
                 if (TryDamage(hit.collider)) break;
             }
         }
+    }
+
+    void SpawnBullet(Vector2 direction)
+    {
+        if (bulletSprite == null || direction.sqrMagnitude < 0.001f) return;
+
+        GameObject projectile = new GameObject("Enemy Bullet");
+        projectile.transform.position = transform.position;
+        projectile.transform.right = direction.normalized;
+        SpriteRenderer renderer = projectile.AddComponent<SpriteRenderer>();
+        renderer.sprite = bulletSprite;
+        renderer.sortingLayerName = characterSortingLayer;
+        renderer.sortingOrder = short.MaxValue;
+        StartCoroutine(MoveBullet(projectile.transform, direction.normalized));
+    }
+
+    IEnumerator MoveBullet(Transform projectile, Vector2 direction)
+    {
+        float distanceTravelled = 0f;
+        while (projectile != null && distanceTravelled < range)
+        {
+            float step = bulletTravelSpeed * Time.deltaTime;
+            projectile.position += (Vector3)(direction * step);
+            distanceTravelled += step;
+            yield return null;
+        }
+        if (projectile != null) Destroy(projectile.gameObject);
     }
 
     void DamageCircle(Vector2 point, float radius)
