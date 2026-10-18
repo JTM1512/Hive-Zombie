@@ -203,8 +203,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ZombieFollow
   followSpeed: 6
   stopDistance: 1.5
-  testDamage: 25
-  attackInterval: 1.25
+  obstacleLayers: -1
+  obstacleLookAhead: 0.9
 --- !u!50 &3677117498735472944
 Rigidbody2D:
   serializedVersion: 5

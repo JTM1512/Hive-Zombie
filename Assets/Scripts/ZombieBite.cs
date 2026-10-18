@@ -51,9 +51,4 @@ public class ZombieBite : MonoBehaviour
         }
     }
 
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red; // Set the gizmo color to red
-        Gizmos.DrawWireSphere(transform.position, biteRange); // Draw a wireframe sphere to visualize the bite range
-    }
 }

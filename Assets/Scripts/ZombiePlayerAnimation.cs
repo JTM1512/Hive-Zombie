@@ -66,7 +66,7 @@ public sealed class ZombiePlayerAnimation : MonoBehaviour
         if (spriteRenderer == null) spriteRenderer = GetComponent<SpriteRenderer>();
         if (body == null) body = GetComponent<Rigidbody2D>();
         if (health == null) health = GetComponent<ZombieHealth>();
-        if (spriteRenderer != null && SortingLayer.NameToID(characterSortingLayer) != 0 &&
+        if (spriteRenderer != null &&
             (spriteRenderer.sortingLayerName != characterSortingLayer || spriteRenderer.sortingOrder != short.MaxValue))
         {
             spriteRenderer.sortingLayerName = characterSortingLayer;

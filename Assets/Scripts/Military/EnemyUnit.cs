@@ -38,7 +38,6 @@ public class EnemyUnit : MonoBehaviour
 
     void ApplyCharacterSorting()
     {
-        if (SortingLayer.NameToID(characterSortingLayer) == 0) return;
         SpriteRenderer[] renderers = GetComponentsInChildren<SpriteRenderer>(true);
         foreach (SpriteRenderer sprite in renderers)
         {
