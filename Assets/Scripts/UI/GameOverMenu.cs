@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameOverMenu : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class GameOverMenu : MonoBehaviour
     [SerializeField] GameObject gameOverPanel;
     [SerializeField] string gameSceneName = "SampleScene";
     [SerializeField] string mainMenuSceneName = "MainMenu";
+    [SerializeField] TextMeshProUGUI bestHordeText;
     void Awake()
     {
         Instance = this;
@@ -48,6 +50,11 @@ public class GameOverMenu : MonoBehaviour
         // Wait while time is still moving, or the death animation never finishes.
         yield return new WaitForSeconds(wait);
 
+        if (bestHordeText != null && Tracker.Instance != null)
+        {
+            bestHordeText.text = "Biggest horde: " + Tracker.Instance.Best;
+        }
+            
         // Freeze the world, then show the panel.
         Time.timeScale = 0f;
         if (gameOverPanel != null)

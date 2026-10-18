@@ -98,7 +98,7 @@ public class GameHud : MonoBehaviour
             new Vector2(1f, 1f),
             new Vector2(-28f, -28f - abilitiesHeight - 12f),
             new Vector2(1f, 1f),
-            new Vector2(420f, 108f),
+            new Vector2(420f, 156f),
             34,
             TextAlignmentOptions.MidlineLeft);
         zombieCountText.textWrappingMode = TextWrappingModes.Normal;
@@ -238,9 +238,10 @@ public class GameHud : MonoBehaviour
     {
         int count = Tracker.Instance != null ? Tracker.Instance.Count : 1;
         int spendable = Mathf.Max(0, count - 1);
+        int best = Tracker.Instance != null ? Tracker.Instance.Best : 1;
 
         if (zombieCountText != null)
-            zombieCountText.text = "Zombies: " + count + "\nCan spend: " + spendable;
+            zombieCountText.text = "Zombies: " + count + "\nCan spend: " + spendable + "\nBest: " + best;
 
         foreach (AbilityRow row in rows)
         {
